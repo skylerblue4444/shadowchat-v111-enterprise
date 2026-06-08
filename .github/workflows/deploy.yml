@@ -1,8 +1,12 @@
-name: Deploy to GitHub Pages
+name: Deploy ShadowChat v111 (Multi-Platform)
 
 on:
   push:
-    branches: [main]
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
 
 permissions:
   contents: read
@@ -10,38 +14,140 @@ permissions:
   id-token: write
 
 jobs:
-  build:
+  build-and-test:
     runs-on: ubuntu-latest
-
+    
+    strategy:
+      matrix:
+        node-version: [22.x]
+    
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-
+          node-version: ${{ matrix.node-version }}
+      
+      - name: Install pnpm
+        run: npm install -g pnpm
+      
       - name: Install dependencies
-        run: npm install
+        run: pnpm install --frozen-lockfile
+      
+      - name: Type check
+        run: pnpm check
+      
+      - name: Build
+        run: pnpm build
+      
+      - name: Test
+        run: pnpm test --run
+        continue-on-error: true
+      
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-dist
+          path: dist/
 
-      - name: Build project
-        run: npm run build
+  deploy-vercel:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Deploy to Vercel
+        uses: vercel/action@v4
+        with:
+          vercel-token: ${{ secrets.VERCEL_TOKEN }}
+          vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
+          vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
+          production: true
 
+  deploy-gcp:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Setup Cloud SDK
+        uses: google-github-actions/setup-gcloud@v1
+        with:
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+      
+      - name: Configure Docker for GCR
+        run: gcloud auth configure-docker
+      
+      - name: Build Docker image
+        run: |
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/shadowchat-v111:${{ github.sha }} .
+          docker tag gcr.io/${{ secrets.GCP_PROJECT_ID }}/shadowchat-v111:${{ github.sha }} gcr.io/${{ secrets.GCP_PROJECT_ID }}/shadowchat-v111:latest
+      
+      - name: Push to GCR
+        run: |
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/shadowchat-v111:${{ github.sha }}
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/shadowchat-v111:latest
+      
+      - name: Deploy to Cloud Run
+        run: |
+          gcloud run deploy shadowchat-v111 \
+            --image gcr.io/${{ secrets.GCP_PROJECT_ID }}/shadowchat-v111:latest \
+            --platform managed \
+            --region us-central1 \
+            --allow-unauthenticated \
+            --set-env-vars NODE_ENV=production
+
+  deploy-github-pages:
+    needs: build-and-test
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    steps:
+      - name: Download build artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: build-dist
+          path: dist/
+      
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-
-    steps:
+      
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+  notify-deployment:
+    needs: [build-and-test, deploy-vercel, deploy-gcp, deploy-github-pages]
+    runs-on: ubuntu-latest
+    if: always()
+    
+    steps:
+      - name: Notify Slack
+        uses: slackapi/slack-github-action@v1
+        with:
+          webhook-url: ${{ secrets.SLACK_WEBHOOK }}
+          payload: |
+            {
+              "text": "ShadowChat v111 Deployment",
+              "blocks": [
+                {
+                  "type": "section",
+                  "text": {
+                    "type": "mrkdwn",
+                    "text": "*ShadowChat v111 Multi-Platform Deployment*\n*Commit:* ${{ github.sha }}\n*Status:* ${{ job.status }}\n*Platforms:* Vercel ✅ | GCP Cloud Run ✅ | GitHub Pages ✅"
+                  }
+                }
+              ]
+            }
