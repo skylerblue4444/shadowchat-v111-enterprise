@@ -65,6 +65,8 @@ const AIEnterprise    = lazy(() => import("./pages/AIEnterprise"));
 const FeaturesLevels = lazy(() => import("./pages/FeaturesLevels"));
 const CorporateIdentity = lazy(() => import("./pages/CorporateIdentityHub"));
 const GlobalIntelligence = lazy(() => import("./pages/GlobalIntelligenceCenter"));
+const AIContentCreation = lazy(() => import("./pages/AIContentCreationSuite"));
+const ProductEvolution = lazy(() => import("./pages/ProductEvolutionEngine"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -141,6 +143,8 @@ function Router() {
           <Route path="/talent" component={TalentPlatform} />
           <Route path="/corporate" component={CorporateIdentity} />
           <Route path="/intelligence" component={GlobalIntelligence} />
+          <Route path="/creation-suite" component={AIContentCreation} />
+          <Route path="/evolution" component={ProductEvolution} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
