@@ -86,6 +86,8 @@ const EnterpriseLogin = lazy(() => import("./pages/EnterpriseLogin"));
 const AdminControlCenter = lazy(() => import("./pages/AdminControlCenter"));
 const JudicialArbitrationHub = lazy(() => import("./pages/JudicialArbitrationHub"));
 const DisasterRecoveryHub = lazy(() => import("./pages/DisasterRecoveryHub"));
+const EliteClubHub = lazy(() => import("./pages/EliteClubHub"));
+const EliteAuctionHouse = lazy(() => import("./pages/EliteAuctionHouse"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -182,6 +184,8 @@ function Router() {
           <Route path="/admin-control" component={AdminControlCenter} />
           <Route path="/judicial" component={JudicialArbitrationHub} />
           <Route path="/recovery" component={DisasterRecoveryHub} />
+          <Route path="/elite-club" component={EliteClubHub} />
+          <Route path="/auction-house" component={EliteAuctionHouse} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>

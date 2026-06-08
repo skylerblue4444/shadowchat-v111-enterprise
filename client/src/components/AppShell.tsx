@@ -15,7 +15,8 @@ import {
   Database, Workflow, AlertTriangle, Globe, Navigation, Flag,
   ChevronLeft, ChevronRight, Menu, X, Activity, Coins,
   TrendingUp, Trophy, Calendar, Code2, ToggleLeft, Star, Users, Spade,
-  Radio, DollarSign, Share2, Sparkles, GraduationCap, Scale, Satellite
+  Radio, DollarSign, Share2, Sparkles, GraduationCap, Scale, Satellite,
+  Crown, Gavel
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -106,6 +107,8 @@ const NAV = [
     { path: "/admin-control", icon: Shield,        label: "Admin Control", badge: "HQ",  badgeType: "purple" },
     { path: "/judicial",      icon: Scale,         label: "AI Supreme Court", badge: "LAW", badgeType: "green" },
     { path: "/recovery",      icon: Satellite,     label: "Planetary Sync", badge: "SYNC", badgeType: "cyan" },
+    { path: "/elite-club",    icon: Crown,         label: "Elite Club",  badge: "VIP",  badgeType: "gold" },
+    { path: "/auction-house", icon: Gavel,         label: "Auction House", badge: "LIVE", badgeType: "amber" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
