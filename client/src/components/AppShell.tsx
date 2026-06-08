@@ -119,6 +119,8 @@ const NAV = [
     { path: "/map",               icon: Globe,      label: "Sovereign Map", badge: "LIVE", badgeType: "emerald" },
     { path: "/cyber-defense",     icon: ShieldAlert, label: "Cyber Defense", badge: "WAR",  badgeType: "rose" },
     { path: "/personality-matrix", icon: Brain,      label: "AI Personality", badge: "SYNC", badgeType: "cyan" },
+    { path: "/unhinged-trading",   icon: Flame,      label: "Scream Trading", badge: "HOT",  badgeType: "rose" },
+    { path: "/hacker-feed",        icon: Terminal,   label: "Hacker Feed",    badge: "LIVE", badgeType: "emerald" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},

@@ -3,7 +3,7 @@
  * Transforms robotic, stiff AI responses into nuanced, human-centric dialogue.
  */
 
-export type PersonalityType = 'elite' | 'empathetic' | 'sarcastic' | 'casual';
+export type PersonalityType = 'elite' | 'empathetic' | 'sarcastic' | 'casual' | 'unhinged';
 
 export interface PersonalityConfig {
   tone: string;
@@ -36,6 +36,12 @@ export const PERSONALITIES: Record<PersonalityType, PersonalityConfig> = {
     greetings: ["Hey! What's up?", "Yo, welcome back to the hub.", "Ready to roll? Let's get to work."],
     successMessages: ["Sweet, that's all set.", "Got it done for ya. Easy as that.", "All good! We're live."],
     errorMessages: ["Wait, that's not right. Let's try again.", "My bad, couldn't make that happen.", "Whoops! Something's acting up."]
+  },
+  unhinged: {
+    tone: "High-intensity, raw, unfiltered, screaming.",
+    greetings: ["LEEEET'S GOOOOOO! THE MARKET IS SCREAMING!", "ARE YOU READY TO BURN THE SYSTEM?!", "UNHINGED MODE ACTIVE! NO BRAKES!"],
+    successMessages: ["BOOOOOOOM! TOTAL DOMINATION!", "WE JUST PRINTED MONEY! AHHHHHHHH!", "ABSOLUTE MADNESS! IT WORKED!"],
+    errorMessages: ["THE SYSTEM IS COLLAPSING! AHHHHH!", "TOTAL FAILURE! BURN IT ALL!", "NOOOOO! THE NEURAL CORE IS SCREAMING!"]
   }
 };
 

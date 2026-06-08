@@ -27,7 +27,8 @@ export default function PersonalityMatrixHub() {
     elite: Shield,
     empathetic: Heart,
     sarcastic: Zap,
-    casual: Coffee
+    casual: Coffee,
+    unhinged: Sparkles
   };
 
   return (
