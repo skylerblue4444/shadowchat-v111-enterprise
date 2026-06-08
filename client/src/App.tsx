@@ -100,6 +100,7 @@ const CyberDefenseCenter = lazy(() => import("./pages/CyberDefenseCenter"));
 const PersonalityMatrixHub = lazy(() => import("./pages/PersonalityMatrixHub"));
 const UnhingedTradingHub = lazy(() => import("./pages/UnhingedTradingHub"));
 const HackerFeedHub = lazy(() => import("./pages/HackerFeedHub"));
+const SovereignAudioHub = lazy(() => import("./pages/SovereignAudioHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -210,6 +211,7 @@ function Router() {
           <Route path="/personality-matrix" component={PersonalityMatrixHub} />
           <Route path="/unhinged-trading" component={UnhingedTradingHub} />
           <Route path="/hacker-feed" component={HackerFeedHub} />
+          <Route path="/audio-hub" component={SovereignAudioHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
