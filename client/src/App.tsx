@@ -67,6 +67,10 @@ const CorporateIdentity = lazy(() => import("./pages/CorporateIdentityHub"));
 const GlobalIntelligence = lazy(() => import("./pages/GlobalIntelligenceCenter"));
 const AIContentCreation = lazy(() => import("./pages/AIContentCreationSuite"));
 const ProductEvolution = lazy(() => import("./pages/ProductEvolutionEngine"));
+const LegalComplianceEngine = lazy(() => import("./pages/LegalComplianceEngine"));
+const SupplyChainHub = lazy(() => import("./pages/SupplyChainHub"));
+const TalentMarketplace = lazy(() => import("./pages/TalentMarketplace"));
+const QuantumSecurityVault = lazy(() => import("./pages/QuantumSecurityVault"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -145,6 +149,10 @@ function Router() {
           <Route path="/intelligence" component={GlobalIntelligence} />
           <Route path="/creation-suite" component={AIContentCreation} />
           <Route path="/evolution" component={ProductEvolution} />
+          <Route path="/legal-compliance" component={LegalComplianceEngine} />
+          <Route path="/supply-chain" component={SupplyChainHub} />
+          <Route path="/talent-market" component={TalentMarketplace} />
+          <Route path="/quantum-security" component={QuantumSecurityVault} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
