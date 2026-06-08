@@ -130,31 +130,31 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   useEffect(() => { setMobileOpen(false); }, [location]);
 
   const sidebarInner = (
-    <div className="flex flex-col h-full">
+    <div className="flex flex-col h-full bg-[#050510] border-r border-white/5 shadow-2xl">
       {/* ── Brand ── */}
       <div className={cn(
-        "flex items-center gap-3 px-4 py-5 border-b border-white/[0.04] shrink-0",
+        "flex items-center gap-3 px-4 py-6 border-b border-white/[0.04] shrink-0",
         sidebarCollapsed && "justify-center"
       )}>
         <div className="relative shrink-0">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-            <Sparkles className="w-5 h-5 text-white" />
+          <div className="w-10 h-10 rounded-2xl bg-gradient-to-br from-emerald-400 via-cyan-500 to-blue-600 flex items-center justify-center shadow-xl shadow-cyan-500/20">
+            <Sparkles className="w-6 h-6 text-white" />
           </div>
-          <span className="absolute -bottom-0.5 -right-0.5 w-3 h-3 rounded-full bg-emerald-500 border-2 border-[#050510] shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+          <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-emerald-500 border-2 border-[#050510] shadow-[0_0_12px_rgba(16,185,129,0.8)]" />
         </div>
         <AnimatePresence>
           {!sidebarCollapsed && (
             <motion.div
-              initial={{ opacity: 0, x: -8 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -8 }}
+              initial={{ opacity: 0, x: -12 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -12 }}
               transition={{ duration: 0.2 }}
               className="min-w-0 flex-1"
             >
-              <div className="text-[15px] font-extrabold text-white tracking-tight leading-none" style={{ fontFamily: "Syne, sans-serif" }}>
+              <div className="text-lg font-black text-white tracking-tighter leading-none" style={{ fontFamily: "Syne, sans-serif" }}>
                 SHADOWCHAT
               </div>
-              <div className="text-[8px] font-mono tracking-[0.1em] mt-1 text-cyan-400/70 uppercase flex flex-col gap-0.5">
-                <span>Mega OS v111</span>
-                <span className="text-white/30 text-[6px] tracking-[0.1em] uppercase">Legacy Edition</span>
+              <div className="text-[9px] font-bold tracking-[0.2em] mt-1 text-emerald-400 uppercase flex flex-col gap-0.5">
+                <span>HOPE AI × SKYCOIN4444</span>
+                <span className="text-white/20 text-[7px] tracking-[0.1em] uppercase">Enterprise v111</span>
               </div>
             </motion.div>
           )}
@@ -166,16 +166,16 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         {!sidebarCollapsed && (
           <motion.div
             initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}
-            className="px-3 py-2 border-b border-white/[0.06] grid grid-cols-3 gap-1 overflow-hidden"
+            className="px-3 py-3 border-b border-white/[0.06] grid grid-cols-3 gap-2 overflow-hidden bg-white/[0.02]"
           >
             {[
               { label: "USERS", val: `${(liveStats.activeUsers / 1000).toFixed(1)}K`, color: "text-cyan-400" },
               { label: "TPS",   val: liveStats.txPerSecond.toLocaleString(),           color: "text-amber-400" },
-              { label: "AI",    val: `${aiMode.health}%`,                              color: "text-emerald-400" },
+              { label: "HOPE",  val: `${aiMode.health}%`,                              color: "text-emerald-400" },
             ].map(s => (
-              <div key={s.label} className="text-center py-0.5">
-                <div className={cn("text-[11px] font-mono font-bold", s.color)}>{s.val}</div>
-                <div className="text-[8px] text-white/25 tracking-wider font-mono">{s.label}</div>
+              <div key={s.label} className="text-center py-1">
+                <div className={cn("text-xs font-black font-mono", s.color)}>{s.val}</div>
+                <div className="text-[7px] text-white/20 tracking-[0.2em] font-bold uppercase">{s.label}</div>
               </div>
             ))}
           </motion.div>
@@ -183,21 +183,21 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </AnimatePresence>
 
       {/* ── Nav ── */}
-      <nav className="flex-1 overflow-y-auto py-2 px-1.5 space-y-3">
+      <nav className="flex-1 overflow-y-auto py-4 px-2 space-y-4 custom-scrollbar">
         {NAV.map(({ section, items }) => (
-          <div key={section}>
+          <div key={section} className="space-y-1">
             <AnimatePresence>
               {!sidebarCollapsed && (
                 <motion.div
                   initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                  className="px-2 mb-1.5 text-[8px] font-bold tracking-[0.18em] text-white/25 uppercase"
+                  className="px-3 mb-2 text-[9px] font-black tracking-[0.25em] text-white/20 uppercase"
                   style={{ fontFamily: "Space Mono, monospace" }}
                 >
                   {section}
                 </motion.div>
               )}
             </AnimatePresence>
-            <div className="space-y-0.5">
+            <div className="space-y-1">
               {items.map((item) => {
                 const active = location === item.path || (item.path !== "/" && location.startsWith(item.path));
                 const badge = item.badgeType === "count"
@@ -207,27 +207,26 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                   <Link key={item.path + item.label} href={item.path} onClick={() => setMobileOpen(false)}>
                     <div
                       className={cn(
-                        "flex items-center gap-2 px-2 py-[7px] rounded-[9px] text-[12.5px] transition-all duration-150 cursor-pointer relative overflow-hidden",
+                        "flex items-center gap-3 px-3 py-2.5 rounded-xl text-[13px] transition-all duration-200 cursor-pointer relative overflow-hidden group",
                         sidebarCollapsed && "justify-center px-2",
                         active
-                          ? "bg-cyan-500/[0.09] text-cyan-400 border border-cyan-500/[0.18]"
-                          : "text-white/40 hover:text-white/75 hover:bg-white/[0.04] border border-transparent"
+                          ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 shadow-lg shadow-emerald-500/5"
+                          : "text-white/40 hover:text-white/80 hover:bg-white/[0.05] border border-transparent"
                       )}
                       title={sidebarCollapsed ? item.label : undefined}
                     >
                       {active && (
-                        <motion.span layoutId="activeNav" className="absolute inset-0 bg-cyan-500/[0.06] rounded-[9px]" />
+                        <motion.span layoutId="activeNav" className="absolute inset-0 bg-emerald-500/5 rounded-xl" />
                       )}
                       {active && (
-                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[2px] h-4 bg-cyan-400 rounded-r"
-                          style={{ boxShadow: "0 0 8px rgba(0,229,255,0.7)" }} />
+                        <span className="absolute left-0 top-1/2 -translate-y-1/2 w-[3px] h-5 bg-emerald-400 rounded-r shadow-[0_0_12px_rgba(52,211,153,0.8)]" />
                       )}
-                      <item.icon className={cn("w-[14px] h-[14px] shrink-0 relative z-10", active ? "text-cyan-400" : "")} />
+                      <item.icon className={cn("w-4 h-4 shrink-0 relative z-10 group-hover:scale-110 transition-transform", active ? "text-emerald-400" : "text-white/30 group-hover:text-white/60")} />
                       <AnimatePresence>
                         {!sidebarCollapsed && (
                           <motion.span
                             initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-                            className="flex-1 truncate font-medium"
+                            className="flex-1 truncate font-bold tracking-tight"
                             style={{ fontFamily: "Space Grotesk, sans-serif" }}
                           >
                             {item.label}
@@ -236,7 +235,7 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
                       </AnimatePresence>
                       {!sidebarCollapsed && badge && (
                         <span className={cn(
-                          "text-[8px] px-1.5 py-0.5 rounded border font-mono font-bold shrink-0",
+                          "text-[9px] px-2 py-0.5 rounded-md border font-black font-mono shrink-0 tracking-tighter shadow-sm",
                           BADGE_STYLES[item.badgeType || "cyan"]
                         )}>
                           {badge}
@@ -252,128 +251,140 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
       </nav>
 
       {/* ── User footer ── */}
-      <div className="border-t border-white/[0.06] p-2 space-y-1 shrink-0">
+      <div className="border-t border-white/[0.06] p-4 space-y-3 shrink-0 bg-white/[0.01]">
         <AnimatePresence>
           {!sidebarCollapsed && (
             <motion.div
               initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-              className="flex items-center gap-2 px-2 py-2 rounded-[9px]"
-              style={{ background: "rgba(0,229,255,0.04)", border: "1px solid rgba(0,229,255,0.08)" }}
+              className="flex items-center gap-3 px-3 py-3 rounded-2xl bg-gradient-to-r from-emerald-500/10 to-cyan-500/10 border border-white/5 shadow-xl"
             >
-              <div className="w-6 h-6 rounded-full bg-gradient-to-br from-cyan-400 to-purple-600 flex items-center justify-center text-[10px] font-bold text-white shrink-0">
+              <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-emerald-400 to-blue-600 flex items-center justify-center text-xs font-black text-white shrink-0 shadow-lg shadow-emerald-500/20">
                 {currentUser.avatar}
               </div>
               <div className="min-w-0 flex-1">
-                <div className="text-[11px] font-semibold text-white truncate" style={{ fontFamily: "Space Grotesk, sans-serif" }}>
+                <div className="text-xs font-black text-white truncate uppercase tracking-tight" style={{ fontFamily: "Syne, sans-serif" }}>
                   {currentUser.name}
                 </div>
-                <div className="text-[8px] font-mono tracking-wider" style={{ color: "rgba(0,229,255,0.6)" }}>
-                  {currentUser.role.toUpperCase()}
+                <div className="text-[8px] font-black tracking-[0.2em] text-emerald-400/70 uppercase">
+                  {currentUser.role} ACCESS
                 </div>
               </div>
+              <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.8)]" />
             </motion.div>
           )}
         </AnimatePresence>
-        <div className="px-2 py-1.5 mb-1">
-          <div className="text-[6px] font-mono text-white/10 uppercase tracking-[0.2em] leading-tight">Visionary Lead</div>
-          <div className="text-[10px] font-bold text-white/40 tracking-tight leading-none mt-0.5" style={{ fontFamily: "Syne, sans-serif" }}>Skyler Blue</div>
-          <div className="text-[5px] font-mono text-white/15 uppercase tracking-[0.1em] mt-1 leading-tight">Innovative Information Technology Resolutions LLC</div>
+        <div className="px-3 py-1">
+          <div className="text-[7px] font-black text-white/10 uppercase tracking-[0.3em] leading-tight">Visionary Lead</div>
+          <div className="text-sm font-black text-white/40 tracking-tighter leading-none mt-1 uppercase" style={{ fontFamily: "Syne, sans-serif" }}>Skyler Blue</div>
+          <div className="text-[6px] font-bold text-white/15 uppercase tracking-[0.15em] mt-1.5 leading-relaxed">
+            Innovative Information Technology Resolutions LLC
+          </div>
         </div>
-        <button
-          onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
-          className="hidden lg:flex w-full items-center justify-center gap-1.5 px-2 py-1.5 rounded-[9px] text-white/25 hover:text-white/55 hover:bg-white/[0.04] transition-colors text-[11px]"
-        >
-          {sidebarCollapsed
-            ? <ChevronRight className="w-3.5 h-3.5" />
-            : <><ChevronLeft className="w-3.5 h-3.5" /><span style={{ fontFamily: "Space Grotesk, sans-serif" }}>Collapse</span></>
-          }
-        </button>
       </div>
     </div>
   );
 
   return (
-    <div className="flex h-screen overflow-hidden" style={{ background: "#050510" }}>
-      {/* Mobile overlay */}
-      <AnimatePresence>
-        {mobileOpen && (
-          <motion.div
-            initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
-            onClick={() => setMobileOpen(false)}
-          />
-        )}
-      </AnimatePresence>
-
-      {/* ── Sidebar ── */}
-      <motion.aside
-        animate={{ width: sidebarCollapsed ? 52 : 220 }}
-        transition={{ duration: 0.25, ease: [0.23, 1, 0.32, 1] }}
-        className={cn(
-          "fixed lg:relative z-50 h-full flex flex-col overflow-hidden",
-          "border-r border-white/[0.06]",
-          mobileOpen ? "translate-x-0" : "-translate-x-full lg:translate-x-0"
-        )}
-        style={{
-          background: "rgba(7,7,20,0.97)",
-          backdropFilter: "blur(24px)",
-          transition: "width 0.25s cubic-bezier(0.23,1,0.32,1), transform 0.25s cubic-bezier(0.23,1,0.32,1)",
-        }}
-      >
+    <div className="flex h-screen overflow-hidden bg-[#050510] text-white selection:bg-cyan-500/30 selection:text-cyan-200">
+      {/* Sidebar Desktop */}
+      <aside className={cn(
+        "hidden md:flex flex-col transition-all duration-300 ease-in-out shrink-0 relative z-40",
+        sidebarCollapsed ? "w-20" : "w-[280px]"
+      )}>
         {sidebarInner}
-      </motion.aside>
-
-      {/* ── Main ── */}
-      <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
-        {/* Top bar */}
-        <header
-          className="h-11 border-b border-white/[0.06] flex items-center gap-3 px-4 shrink-0"
-          style={{ background: "rgba(5,5,16,0.92)", backdropFilter: "blur(20px)" }}
+        <button
+          onClick={() => setSidebarCollapsed(!sidebarCollapsed)}
+          className="absolute -right-3 top-1/2 -translate-y-1/2 w-6 h-6 rounded-full bg-[#050510] border border-white/10 flex items-center justify-center text-white/40 hover:text-white hover:border-emerald-500/50 transition-all z-50 shadow-xl"
         >
-          <button
-            className="lg:hidden p-1.5 rounded-lg hover:bg-white/[0.07] text-white/40 hover:text-white/70 transition-colors"
-            onClick={() => setMobileOpen(!mobileOpen)}
-          >
-            {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
-          </button>
+          {sidebarCollapsed ? <ChevronRight className="w-3.5 h-3.5" /> : <ChevronLeft className="w-3.5 h-3.5" />}
+        </button>
+      </aside>
 
-          {/* Ticker tape */}
-          <div className="flex-1 min-w-0 overflow-hidden">
-            <div
-              className="flex gap-8 whitespace-nowrap"
-              style={{ animation: "sc-ticker 50s linear infinite" }}
-            >
-              {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-                <span key={i} className="text-[10px] font-mono text-white/35 shrink-0">
-                  {item}
-                </span>
-              ))}
+      {/* Main Content */}
+      <main className="flex-1 flex flex-col relative overflow-hidden">
+        {/* Top Header / Ticker */}
+        <header className="h-14 border-b border-white/[0.04] bg-[#050510]/80 backdrop-blur-2xl flex items-center justify-between px-4 shrink-0 z-30">
+          <div className="flex items-center gap-4 flex-1 min-w-0">
+            <button onClick={() => setMobileOpen(true)} className="md:hidden p-2 text-white/60 hover:text-white">
+              <Menu className="w-5 h-5" />
+            </button>
+            
+            {/* Ticker Tape */}
+            <div className="hidden lg:flex flex-1 overflow-hidden pointer-events-none relative group">
+              <div className="absolute left-0 top-0 bottom-0 w-12 bg-gradient-to-r from-[#050510] to-transparent z-10" />
+              <div className="absolute right-0 top-0 bottom-0 w-12 bg-gradient-to-l from-[#050510] to-transparent z-10" />
+              <div className="flex gap-8 animate-ticker whitespace-nowrap">
+                {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+                  <span key={i} className="text-[10px] font-black font-mono text-white/20 tracking-widest uppercase">
+                    {item}
+                  </span>
+                ))}
+              </div>
             </div>
           </div>
 
-          {/* Right side */}
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="hidden sm:flex items-center gap-1.5 text-[10px] font-mono px-2 py-1 rounded-lg border"
-              style={{ color: "rgba(0,229,255,0.8)", background: "rgba(0,229,255,0.07)", borderColor: "rgba(0,229,255,0.15)" }}>
-              <Coins className="w-3 h-3" />
-              4,444,444 SKY
+          <div className="flex items-center gap-6 pl-4 border-l border-white/[0.04]">
+            <div className="hidden sm:flex flex-col items-end">
+              <div className="text-[11px] font-black text-white/80 font-mono tracking-tighter uppercase">
+                {time.toLocaleTimeString([], { hour12: false })}
+              </div>
+              <div className="text-[8px] font-black text-emerald-400 tracking-widest uppercase font-mono">
+                UTC {time.getTimezoneOffset() / -60 >= 0 ? "+" : ""}{time.getTimezoneOffset() / -60}
+              </div>
             </div>
-            <div className="flex items-center gap-1.5 text-[9px] font-mono px-2 py-1 rounded-lg border"
-              style={{ color: "rgba(16,185,129,0.9)", background: "rgba(16,185,129,0.08)", borderColor: "rgba(16,185,129,0.2)" }}>
-              <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 inline-block animate-pulse" />
-              {systemStatus.uptime}% UP
-            </div>
-            <div className="text-[10px] font-mono text-white/20 hidden md:block">
-              {time.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit", second: "2-digit" })}
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl bg-white/[0.03] border border-white/5 flex items-center justify-center text-white/40 hover:text-emerald-400 hover:border-emerald-500/30 transition-all cursor-pointer">
+                <Bell className="w-4 h-4" />
+              </div>
+              <div className="w-8 h-8 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-400 hover:bg-emerald-500/20 transition-all cursor-pointer">
+                <Zap className="w-4 h-4" />
+              </div>
             </div>
           </div>
         </header>
 
-        {/* Page content */}
-        <main className="flex-1 overflow-y-auto" style={{ animation: "sc-fade-in 0.3s cubic-bezier(0.23,1,0.32,1) both" }}>
-          {children}
-        </main>
-      </div>
+        {/* Viewport */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden relative custom-scrollbar bg-gradient-to-b from-[#050510] to-[#0a0a1a]">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={location}
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -8 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="min-h-full"
+            >
+              {children}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+      </main>
+
+      {/* Mobile Sidebar Overlay */}
+      <AnimatePresence>
+        {mobileOpen && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}
+              onClick={() => setMobileOpen(false)}
+              className="fixed inset-0 bg-black/80 backdrop-blur-md z-[60] md:hidden"
+            />
+            <motion.aside
+              initial={{ x: "-100%" }} animate={{ x: 0 }} exit={{ x: "-100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 left-0 bottom-0 w-[280px] z-[70] md:hidden shadow-2xl"
+            >
+              {sidebarInner}
+              <button
+                onClick={() => setMobileOpen(false)}
+                className="absolute right-4 top-4 p-2 text-white/40 hover:text-white bg-white/5 rounded-xl border border-white/10"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            </motion.aside>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
