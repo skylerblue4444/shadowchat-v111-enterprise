@@ -14,6 +14,7 @@ interface EnterpriseState {
   gems: number;
   
   // System Status
+  neuralPowerLevel: number;
   isSovereignMode: boolean;
   isEncryptionActive: boolean;
   isSelfHealingActive: boolean;
@@ -24,6 +25,7 @@ interface EnterpriseState {
   // Actions
   updateSkycoin: (amount: number) => void;
   updateManusCoin: (amount: number) => void;
+  activateUpgrade: (id: number, cost: number) => void;
   toggleSovereign: () => void;
   addActivity: (type: string, message: string) => void;
 }
@@ -33,6 +35,7 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   manusCoin: 1000,
   credits: 444,
   gems: 44,
+  neuralPowerLevel: 4444,
   isSovereignMode: true,
   isEncryptionActive: true,
   isSelfHealingActive: true,
@@ -44,6 +47,16 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   
   updateSkycoin: (amount) => set((state) => ({ skycoin: state.skycoin + amount })),
   updateManusCoin: (amount) => set((state) => ({ manusCoin: state.manusCoin + amount })),
+  activateUpgrade: (id, cost) => set((state) => {
+    if (state.skycoin >= cost) {
+      return { 
+        skycoin: state.skycoin - cost,
+        neuralPowerLevel: state.neuralPowerLevel + (cost * 1.1),
+        recentActivity: [{ id: Math.random().toString(), type: 'UPG', message: `Upgrade #${id} activated via Skycoin4444.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
+      };
+    }
+    return state;
+  }),
   toggleSovereign: () => set((state) => ({ isSovereignMode: !state.isSovereignMode })),
   addActivity: (type, message) => set((state) => ({
     recentActivity: [{ id: Math.random().toString(), type, message, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]

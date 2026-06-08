@@ -21,7 +21,7 @@ interface Upgrade {
 }
 
 export default function UpgradeMatrix() {
-  const { skycoin, addActivity } = useNeuralCore();
+  const { skycoin, neuralPowerLevel, activateUpgrade } = useNeuralCore();
   const [filter, setFilter] = useState<string>("ALL");
   const [search, setSearch] = useState("");
 
@@ -53,8 +53,8 @@ export default function UpgradeMatrix() {
 
   const stats = [
     { label: "Total Upgrades", value: "1,000", color: "text-white" },
-    { label: "Active Points", value: "4,444", color: "text-emerald-500" },
-    { label: "Optimization", value: "94.3%", color: "text-cyan-400" },
+    { label: "Neural Power", value: neuralPowerLevel.toFixed(0), color: "text-emerald-500" },
+    { label: "Skycoin Liquidity", value: skycoin.toLocaleString(), color: "text-cyan-400" },
     { label: "Sovereign Tier", value: "SSS", color: "text-purple-500" },
   ];
 
@@ -109,30 +109,47 @@ export default function UpgradeMatrix() {
 
       {/* Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 max-h-[600px] overflow-y-auto pr-2 custom-scrollbar">
-        {filteredUpgrades.map((upgrade) => (
-          <motion.div 
-            key={upgrade.id}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="bg-slate-900/20 border border-slate-800/50 p-4 rounded-xl hover:border-emerald-500/30 transition-all group"
-          >
-            <div className="flex justify-between items-start mb-3">
-              <span className={`text-[9px] font-black px-2 py-1 rounded bg-slate-800 text-slate-400 group-hover:text-emerald-400 transition-colors`}>
-                {upgrade.category}
-              </span>
-              <span className={`text-[9px] font-black ${
-                upgrade.status === 'ACTIVE' ? "text-emerald-500" : (upgrade.status === 'OPTIMIZING' ? "text-cyan-400" : "text-slate-600")
-              }`}>
-                {upgrade.status}
-              </span>
-            </div>
-            <h3 className="text-xs font-bold text-slate-200 mb-1 truncate">{upgrade.title}</h3>
-            <div className="flex justify-between items-center">
-              <span className="text-[9px] text-slate-600 font-mono">ID: #{upgrade.id.toString().padStart(4, '0')}</span>
-              <span className="text-[10px] text-emerald-500/50 font-black">+{upgrade.points} PTS</span>
-            </div>
-          </motion.div>
-        ))}
+        {filteredUpgrades.map((upgrade) => {
+          const cost = 44 + (upgrade.id % 400);
+          const canAfford = skycoin >= cost;
+          return (
+            <motion.div 
+              key={upgrade.id}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className={`bg-slate-900/20 border p-4 rounded-xl transition-all group ${
+                upgrade.status === 'ACTIVE' ? "border-emerald-500/30" : "border-slate-800/50 hover:border-emerald-500/30"
+              }`}
+            >
+              <div className="flex justify-between items-start mb-3">
+                <span className={`text-[9px] font-black px-2 py-1 rounded bg-slate-800 text-slate-400 group-hover:text-emerald-400 transition-colors`}>
+                  {upgrade.category}
+                </span>
+                <span className={`text-[9px] font-black ${
+                  upgrade.status === 'ACTIVE' ? "text-emerald-500" : (upgrade.status === 'OPTIMIZING' ? "text-cyan-400" : "text-slate-600")
+                }`}>
+                  {upgrade.status}
+                </span>
+              </div>
+              <h3 className="text-xs font-bold text-slate-200 mb-1 truncate">{upgrade.title}</h3>
+              <div className="flex justify-between items-center mb-4">
+                <span className="text-[9px] text-slate-600 font-mono">ID: #{upgrade.id.toString().padStart(4, '0')}</span>
+                <span className="text-[10px] text-emerald-500/50 font-black">{cost} SKY</span>
+              </div>
+              {upgrade.status !== 'ACTIVE' && (
+                <button 
+                  onClick={() => activateUpgrade(upgrade.id, cost)}
+                  disabled={!canAfford}
+                  className={`w-full py-2 rounded-lg text-[9px] font-black uppercase tracking-widest transition-all ${
+                    canAfford ? "bg-emerald-500 text-black hover:bg-emerald-400" : "bg-slate-800 text-slate-600 cursor-not-allowed"
+                  }`}
+                >
+                  {canAfford ? "Power Up" : "Insufficient SKY"}
+                </button>
+              )}
+            </motion.div>
+          );
+        })}
       </div>
 
       {/* Footer Info */}
