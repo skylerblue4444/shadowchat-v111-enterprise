@@ -111,6 +111,8 @@ const NAV = [
     { path: "/auction-house", icon: Gavel,         label: "Auction House", badge: "LIVE", badgeType: "amber" },
     { path: "/treasury",      icon: Landmark,      label: "Manus Treasury", badge: "MINT", badgeType: "cyan" },
     { path: "/upgrade-matrix", icon: Zap,          label: "Upgrade Matrix", badge: "1000", badgeType: "emerald" },
+    { path: "/profit-models",  icon: TrendingUp,   label: "Profit Models", badge: "ROI",  badgeType: "green" },
+    { path: "/charity-hub",    icon: Heart,        label: "Impact Charity", badge: "GIVE", badgeType: "red" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},

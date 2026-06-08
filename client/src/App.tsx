@@ -90,6 +90,8 @@ const EliteClubHub = lazy(() => import("./pages/EliteClubHub"));
 const EliteAuctionHouse = lazy(() => import("./pages/EliteAuctionHouse"));
 const ManusTreasuryHub = lazy(() => import("./pages/ManusTreasuryHub"));
 const UpgradeMatrix = lazy(() => import("./pages/UpgradeMatrix"));
+const EconomicProfitHub = lazy(() => import("./pages/EconomicProfitHub"));
+const CharityTransparencyHub = lazy(() => import("./pages/CharityTransparencyHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -190,6 +192,8 @@ function Router() {
           <Route path="/auction-house" component={EliteAuctionHouse} />
           <Route path="/treasury" component={ManusTreasuryHub} />
           <Route path="/upgrade-matrix" component={UpgradeMatrix} />
+          <Route path="/profit-models" component={EconomicProfitHub} />
+          <Route path="/charity-hub" component={CharityTransparencyHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
