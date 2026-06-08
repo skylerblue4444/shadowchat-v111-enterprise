@@ -63,6 +63,8 @@ const HackingTools    = lazy(() => import("./pages/HackingTools"));
 const LegalTools      = lazy(() => import("./pages/LegalTools"));
 const AIEnterprise    = lazy(() => import("./pages/AIEnterprise"));
 const FeaturesLevels = lazy(() => import("./pages/FeaturesLevels"));
+const CorporateIdentity = lazy(() => import("./pages/CorporateIdentityHub"));
+const GlobalIntelligence = lazy(() => import("./pages/GlobalIntelligenceCenter"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -137,6 +139,8 @@ function Router() {
           <Route path="/features" component={FeaturesLevels} />
           <Route path="/invoicing" component={InvoicingPage} />
           <Route path="/talent" component={TalentPlatform} />
+          <Route path="/corporate" component={CorporateIdentity} />
+          <Route path="/intelligence" component={GlobalIntelligence} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
