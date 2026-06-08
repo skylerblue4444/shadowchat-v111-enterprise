@@ -47,4 +47,4 @@ echo "Press Ctrl+C to stop the server"
 echo ""
 
 # Start the production server
-NODE_ENV=production pnpm start
+NODE_ENV=production OAUTH_SERVER_URL="https://auth.manus.im" pnpm start

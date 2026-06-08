@@ -35,4 +35,4 @@ echo "Press Ctrl+C to stop the server"
 echo ""
 
 # Start the dev server
-pnpm dev
+OAUTH_SERVER_URL="https://auth.manus.im" pnpm dev
