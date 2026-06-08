@@ -17,6 +17,7 @@ const formatCurrency = (n: number) => new Intl.NumberFormat('en-US', { style: 'c
 const formatNumber = (n: number) => new Intl.NumberFormat('en-US', { notation: 'compact' }).format(n);
 import { cn } from "@/lib/utils";
 import { useLivePrices } from "@/hooks/useLivePrice";
+import { useNeuralCore } from "@/lib/neural-core-sync";
 
 const TOKENS = [
   { symbol: "SKYCOIN", name: "ShadowChat Token", balance: 4444444, price: 0.044, change: 4.4, color: "#00e5ff" },
@@ -82,6 +83,7 @@ function Sparkline({ data, color }: { data: number[]; color: string }) {
 
 export default function Dashboard() {
   const { user: currentUser } = useAuth();
+  const { skycoin, credits, gems, recentActivity } = useNeuralCore();
   const systemStatus = "OPERATIONAL";
   const aiMode = "oracle";
   const notifications: any[] = [];
@@ -91,7 +93,6 @@ export default function Dashboard() {
   const [liveStats, setLiveStats] = useState({
     users: 24891, tps: 4420, latency: 12, aiQueue: 7
   });
-  const [activityLog, setActivityLog] = useState(ACTIVITY_LOG);
   const unread = notifications.filter(n => !n.read).length;
 
   useEffect(() => {
@@ -126,6 +127,25 @@ export default function Dashboard() {
               OPERATIONAL
             </span>
           </div>
+        </div>
+      </div>
+
+      {/* ── Sovereign Balance Core ───────────────────────────────────────── */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-slate-900/40 border border-emerald-500/20 p-6 rounded-2xl shadow-lg shadow-emerald-500/5">
+          <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Liquid Skycoin</div>
+          <div className="text-4xl font-black italic tracking-tighter text-emerald-500">{skycoin.toLocaleString()} SKY</div>
+          <div className="text-[9px] text-emerald-500/40 font-mono mt-2 uppercase tracking-widest">Protocol 4444 Active</div>
+        </div>
+        <div className="bg-slate-900/40 border border-cyan-500/20 p-6 rounded-2xl shadow-lg shadow-cyan-500/5">
+          <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Neural Credits</div>
+          <div className="text-4xl font-black italic tracking-tighter text-cyan-400">{credits.toFixed(2)}</div>
+          <div className="text-[9px] text-cyan-400/40 font-mono mt-2 uppercase tracking-widest">Enterprise Tier</div>
+        </div>
+        <div className="bg-slate-900/40 border border-purple-500/20 p-6 rounded-2xl shadow-lg shadow-purple-500/5">
+          <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Sovereign Gems</div>
+          <div className="text-4xl font-black italic tracking-tighter text-purple-500">{gems.toFixed(1)}</div>
+          <div className="text-[9px] text-purple-400/40 font-mono mt-2 uppercase tracking-widest">Rarity Level: SSS</div>
         </div>
       </div>
 

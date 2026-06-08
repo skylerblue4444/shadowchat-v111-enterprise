@@ -5,6 +5,7 @@ import {
   Lock, Cpu, Server, BarChart3, Database,
   AlertTriangle, Settings, RefreshCw, Power
 } from "lucide-react";
+import { useNeuralCore } from "@/lib/neural-core-sync";
 import { Link } from "wouter";
 
 /**
@@ -14,10 +15,11 @@ import { Link } from "wouter";
 
 export default function AdminControlCenter() {
   const [systemLoad, setSystemLoad] = useState(24);
+  const { skycoin, isSovereignMode, isEncryptionActive, isSelfHealingActive, toggleSovereign, recentActivity } = useNeuralCore();
   
   const stats = [
     { label: "Total AUM", value: "$2.48B", icon: Zap, color: "text-cyan-400" },
-    { label: "Active Hubs", value: "11/11", icon: Server, color: "text-emerald-400" },
+    { label: "Platform SKY", value: skycoin.toLocaleString(), icon: Server, color: "text-emerald-400" },
     { label: "Global Users", value: "8.52M", icon: Users, color: "text-purple-400" },
     { label: "Threat Level", value: "Minimal", icon: Shield, color: "text-emerald-500" },
   ];
@@ -120,13 +122,9 @@ export default function AdminControlCenter() {
             <div className="bg-slate-900/40 border border-slate-800 p-6 rounded-2xl">
               <h3 className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-6">Security Incident Log</h3>
               <div className="space-y-4">
-                {[
-                  { msg: "DDoS mitigation active on API layer", time: "2m ago", level: "info" },
-                  { msg: "Quantum key rotation successful", time: "14m ago", level: "success" },
-                  { msg: "Unauthorized access blocked (IP: 192.x.x.x)", time: "45m ago", level: "warning" },
-                ].map((log, i) => (
+                {recentActivity.map((log, i) => (
                   <div key={i} className="flex justify-between items-center text-[11px] border-b border-slate-800 pb-2 last:border-0">
-                    <span className="text-slate-300">{log.msg}</span>
+                    <span className="text-slate-300">[{log.type}] {log.message}</span>
                     <span className="text-slate-600 font-mono">{log.time}</span>
                   </div>
                 ))}
@@ -156,9 +154,9 @@ export default function AdminControlCenter() {
             </h3>
             <div className="space-y-6">
               {[
-                { label: "Sovereign Mode", desc: "Absolute admin override", active: true },
-                { label: "Quantum Encryption", desc: "Post-quantum security", active: true },
-                { label: "AI Self-Healing", desc: "Auto-fix infrastructure", active: true },
+                { label: "Sovereign Mode", desc: "Absolute admin override", active: isSovereignMode, action: toggleSovereign },
+                { label: "Quantum Encryption", desc: "Post-quantum security", active: isEncryptionActive },
+                { label: "AI Self-Healing", desc: "Auto-fix infrastructure", active: isSelfHealingActive },
                 { label: "Public Access", desc: "Enable/Disable platform", active: false },
               ].map((s) => (
                 <div key={s.label} className="flex items-center justify-between">
@@ -166,9 +164,12 @@ export default function AdminControlCenter() {
                     <div className="text-xs font-bold text-white">{s.label}</div>
                     <div className="text-[9px] text-slate-600 font-black uppercase tracking-widest">{s.desc}</div>
                   </div>
-                  <div className={`w-10 h-5 rounded-full p-1 transition-all ${s.active ? "bg-emerald-500" : "bg-slate-800"}`}>
+                  <button 
+                    onClick={() => s.action?.()}
+                    className={`w-10 h-5 rounded-full p-1 transition-all ${s.active ? "bg-emerald-500" : "bg-slate-800"}`}
+                  >
                     <div className={`w-3 h-3 bg-white rounded-full transition-all ${s.active ? "translate-x-5" : "translate-x-0"}`}></div>
-                  </div>
+                  </button>
                 </div>
               ))}
             </div>

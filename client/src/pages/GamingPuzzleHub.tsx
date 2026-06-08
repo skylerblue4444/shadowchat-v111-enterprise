@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNeuralCore } from "@/lib/neural-core-sync";
 
 /**
  * High-Stakes Gaming & Puzzle Hub
@@ -7,6 +8,12 @@ import React, { useState } from "react";
 
 export default function GamingPuzzleHub() {
   const [activeGame, setActiveGame] = useState("all");
+  const { skycoin, updateSkycoin, addActivity } = useNeuralCore();
+
+  const handlePlay = (amount: number, game: string) => {
+    updateSkycoin(amount);
+    addActivity('GAM', `Earned ${amount} SKY in ${game}!`);
+  };
 
   const gamingMetrics = [
     { label: "Active Players", value: "1.2M", status: "High" },
@@ -36,7 +43,7 @@ export default function GamingPuzzleHub() {
         </div>
         <div className="text-right">
           <div className="text-[10px] text-slate-500 font-black uppercase tracking-widest mb-1">Your Balance</div>
-          <div className="text-emerald-500 font-black uppercase text-xl">4,444 SKY</div>
+          <div className="text-emerald-500 font-black uppercase text-xl">{skycoin.toLocaleString()} SKY</div>
         </div>
       </div>
 
@@ -70,7 +77,10 @@ export default function GamingPuzzleHub() {
                     <span className="text-[10px] text-emerald-500 font-bold uppercase tracking-widest">Reward: {game.reward} SKY</span>
                   </div>
                 </div>
-                <button className="bg-emerald-500 text-black px-6 py-2 font-black uppercase italic tracking-tighter hover:bg-emerald-400 transition-all">
+                <button 
+                  onClick={() => handlePlay(500, game.name)}
+                  className="bg-emerald-500 text-black px-6 py-2 font-black uppercase italic tracking-tighter hover:bg-emerald-400 transition-all"
+                >
                   Play Now
                 </button>
               </div>
