@@ -10,6 +10,7 @@ import { Mic, MicOff, Volume2, X, ChevronDown, ChevronUp } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 import { useLocation } from "wouter";
+import { EXTENDED_COMMANDS } from "@/lib/voice-commands-extended";
 
 /* ─── Voice Commands ─────────────────────────────────────────────────── */
 interface VoiceCommand {
@@ -19,6 +20,7 @@ interface VoiceCommand {
 }
 
 const COMMANDS: VoiceCommand[] = [
+  ...EXTENDED_COMMANDS,
   // ── Navigation (All 50+ modules) ──
   { pattern: /go to (dashboard|home|mission control)/i,   label: "→ Dashboard",    action: (_, nav) => { nav("/"); return "Navigating to Mission Control"; } },
   { pattern: /go to (feed|social|posts)/i,               label: "→ Feed",          action: (_, nav) => { nav("/feed"); return "Opening Social Feed"; } },

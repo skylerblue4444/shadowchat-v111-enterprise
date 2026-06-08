@@ -80,6 +80,7 @@ const HealthcareWellnessHub = lazy(() => import("./pages/HealthcareWellnessHub")
 const EducationAcademy = lazy(() => import("./pages/EducationAcademy"));
 const GamingPuzzleHub = lazy(() => import("./pages/GamingPuzzleHub"));
 const EventsHub = lazy(() => import("./pages/EventsHub"));
+const NeuralNavigationHub = lazy(() => import("./pages/NeuralNavigationHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -171,6 +172,7 @@ function Router() {
           <Route path="/academy" component={EducationAcademy} />
           <Route path="/gaming" component={GamingPuzzleHub} />
           <Route path="/events-hub" component={EventsHub} />
+          <Route path="/neural-nav" component={NeuralNavigationHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
