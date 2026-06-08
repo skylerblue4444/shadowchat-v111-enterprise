@@ -104,6 +104,10 @@ const HackerFeedHub = lazy(() => import("./pages/HackerFeedHub"));
 const SovereignAudioHub = lazy(() => import("./pages/SovereignAudioHub"));
 const AIEvolutionLab = lazy(() => import("./pages/AIEvolutionLab"));
 const SovereignExpansionHub = lazy(() => import("./pages/SovereignExpansionHub"));
+const NeuralMarketplace = lazy(() => import("./pages/NeuralMarketplace"));
+const SovereignIntelligenceAgency = lazy(() => import("./pages/SovereignIntelligenceAgency"));
+const FeatureFactoryHub = lazy(() => import("./pages/FeatureFactoryHub"));
+const SovereignIdentityVault = lazy(() => import("./pages/SovereignIdentityVault"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -217,6 +221,10 @@ function Router() {
           <Route path="/audio-hub" component={SovereignAudioHub} />
           <Route path="/ai-evolution" component={AIEvolutionLab} />
           <Route path="/expansion" component={SovereignExpansionHub} />
+          <Route path="/neural-market" component={NeuralMarketplace} />
+          <Route path="/intel-agency" component={SovereignIntelligenceAgency} />
+          <Route path="/feature-factory" component={FeatureFactoryHub} />
+          <Route path="/identity-vault" component={SovereignIdentityVault} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
