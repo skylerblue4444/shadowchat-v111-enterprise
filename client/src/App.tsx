@@ -95,6 +95,7 @@ const CharityTransparencyHub = lazy(() => import("./pages/CharityTransparencyHub
 const GamificationHub = lazy(() => import("./pages/GamificationHub"));
 const DeFiTerminal = lazy(() => import("./pages/DeFiTerminal"));
 const GovernanceVotingHub = lazy(() => import("./pages/GovernanceVotingHub"));
+const SovereignMap = lazy(() => import("./pages/SovereignMap"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -200,6 +201,7 @@ function Router() {
           <Route path="/neural-xp" component={GamificationHub} />
           <Route path="/defi" component={DeFiTerminal} />
           <Route path="/governance-voting" component={GovernanceVotingHub} />
+          <Route path="/map" component={SovereignMap} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>

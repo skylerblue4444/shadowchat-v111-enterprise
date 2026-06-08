@@ -116,6 +116,7 @@ const NAV = [
     { path: "/neural-xp",      icon: Trophy,       label: "Neural XP",   badge: "LVL",  badgeType: "emerald" },
     { path: "/defi",           icon: Wallet,       label: "DeFi Terminal", badge: "DEFI", badgeType: "cyan" },
     { path: "/governance-voting", icon: Vote,       label: "Governance",  badge: "VOTE", badgeType: "purple" },
+    { path: "/map",               icon: Globe,      label: "Sovereign Map", badge: "LIVE", badgeType: "emerald" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
