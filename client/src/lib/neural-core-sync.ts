@@ -25,6 +25,7 @@ interface EnterpriseState {
   isSovereignMode: boolean;
   isEncryptionActive: boolean;
   isSelfHealingActive: boolean;
+  isAgentAutomationActive: boolean;
   
   // Activity Feed
   recentActivity: Array<{ id: string; type: string; message: string; time: string }>;
@@ -58,6 +59,7 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   isSovereignMode: true,
   isEncryptionActive: true,
   isSelfHealingActive: true,
+  isAgentAutomationActive: true,
   recentActivity: [
     { id: '1', type: 'SEC', message: 'Quantum encryption keys rotated successfully.', time: '2m ago' },
     { id: '2', type: 'LAW', message: 'AI Supreme Court resolved Case-4444-A.', time: '5m ago' },

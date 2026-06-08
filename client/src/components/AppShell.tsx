@@ -136,6 +136,7 @@ const NAV = [
     { path: "/trade-terminal",    icon: Globe,      label: "Trade Terminal", badge: "TRADE", badgeType: "cyan" },
     { path: "/patent-lab",        icon: Lightbulb,  label: "Patent Lab",     badge: "R&D",   badgeType: "purple" },
     { path: "/philanthropy",      icon: Heart,      label: "Philanthropy",   badge: "GIVE",  badgeType: "rose" },
+    { path: "/agents",            icon: Bot,        label: "Autonomous Agents", badge: "ASA",  badgeType: "cyan" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},

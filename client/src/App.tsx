@@ -116,6 +116,7 @@ const ResourceExtractorHub = lazy(() => import("./pages/ResourceExtractorHub"));
 const GlobalTradeTerminal = lazy(() => import("./pages/GlobalTradeTerminal"));
 const ElitePatentLab = lazy(() => import("./pages/ElitePatentLab"));
 const PhilanthropyHub = lazy(() => import("./pages/PhilanthropyHub"));
+const AutonomousAgentHub = lazy(() => import("./pages/AutonomousAgentHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -241,6 +242,7 @@ function Router() {
           <Route path="/trade-terminal" component={GlobalTradeTerminal} />
           <Route path="/patent-lab" component={ElitePatentLab} />
           <Route path="/philanthropy" component={PhilanthropyHub} />
+          <Route path="/agents" component={AutonomousAgentHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
