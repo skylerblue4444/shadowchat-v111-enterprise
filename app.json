@@ -1,0 +1,59 @@
+{
+  "name": "ShadowChat",
+  "displayName": "ShadowChat - Enterprise Platform",
+  "description": "Premium enterprise platform powered by Hope AI and Skycoin4444. Real-time communication, AI agents, crypto, and more.",
+  "version": "1.0.0",
+  "slug": "shadowchat-v111",
+  "scheme": "shadowchat",
+  "privacy": "public",
+  "platforms": ["ios", "android", "web"],
+  "ios": {
+    "supportsTablet": true,
+    "bundleIdentifier": "com.shadowchat.enterprise",
+    "buildNumber": "1.0.0",
+    "infoPlist": {
+      "NSCameraUsageDescription": "Camera access required for video calls and streaming",
+      "NSMicrophoneUsageDescription": "Microphone access required for voice calls",
+      "NSPhotoLibraryUsageDescription": "Photo library access for sharing media",
+      "NSLocationWhenInUseUsageDescription": "Location access for location-based features"
+    }
+  },
+  "android": {
+    "package": "com.shadowchat.enterprise",
+    "versionCode": 1,
+    "permissions": [
+      "CAMERA",
+      "RECORD_AUDIO",
+      "ACCESS_FINE_LOCATION",
+      "ACCESS_COARSE_LOCATION",
+      "READ_EXTERNAL_STORAGE",
+      "WRITE_EXTERNAL_STORAGE",
+      "INTERNET"
+    ],
+    "adaptiveIcon": {
+      "foregroundImage": "./assets/adaptive-icon.png",
+      "backgroundColor": "#0a0a0a"
+    }
+  },
+  "web": {
+    "favicon": "./assets/favicon.ico",
+    "display": "standalone",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "startUrl": "/",
+    "shortName": "ShadowChat",
+    "themeColor": "#0a0a0a",
+    "backgroundColor": "#0a0a0a"
+  },
+  "plugins": [
+    "expo-camera",
+    "expo-microphone",
+    "expo-location",
+    "expo-media-library"
+  ],
+  "extra": {
+    "eas": {
+      "projectId": "shadowchat-v111"
+    }
+  }
+}
