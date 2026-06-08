@@ -7,6 +7,7 @@ import AppShell from "./components/AppShell";
 import VoiceDeck from "./components/VoiceDeck";
 import CommandPalette from "./components/CommandPalette";
 import SovereignHUD from "./components/SovereignHUD";
+import BetaReporter from "./components/BetaReporter";
 import { lazy, Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -252,7 +253,8 @@ function Router() {
       <VoiceDeck />
       <CommandPalette />
       <SovereignHUD />
-    </AppShell>
+      <BetaReporter />
+    </div>
   );
 }
 
