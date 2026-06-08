@@ -122,6 +122,7 @@ const NAV = [
     { path: "/unhinged-trading",   icon: Flame,      label: "Scream Trading", badge: "HOT",  badgeType: "rose" },
     { path: "/hacker-feed",        icon: Terminal,   label: "Hacker Feed",    badge: "LIVE", badgeType: "emerald" },
     { path: "/audio-hub",         icon: Headphones, label: "Audio & Voice",  badge: "HI-FI", badgeType: "purple" },
+    { path: "/ai-evolution",      icon: Brain,      label: "AI Evolution",   badge: "EVO",  badgeType: "emerald" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
