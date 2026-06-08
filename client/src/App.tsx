@@ -111,6 +111,7 @@ const SovereignIdentityVault = lazy(() => import("./pages/SovereignIdentityVault
 const SovereignArtifactForge = lazy(() => import("./pages/SovereignArtifactForge"));
 const SovereignCentralBank = lazy(() => import("./pages/SovereignCentralBank"));
 const EliteVIPConcierge = lazy(() => import("./pages/EliteVIPConcierge"));
+const ShadowOS = lazy(() => import("./pages/ShadowOS"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -231,6 +232,7 @@ function Router() {
           <Route path="/artifact-forge" component={SovereignArtifactForge} />
           <Route path="/central-bank" component={SovereignCentralBank} />
           <Route path="/vip-concierge" component={EliteVIPConcierge} />
+          <Route path="/os" component={ShadowOS} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>

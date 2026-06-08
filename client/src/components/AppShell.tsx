@@ -131,6 +131,7 @@ const NAV = [
     { path: "/artifact-forge",    icon: Hammer,     label: "Artifact Forge", badge: "RARE",  badgeType: "purple" },
     { path: "/central-bank",      icon: Landmark,   label: "Central Bank",   badge: "BANK",  badgeType: "emerald" },
     { path: "/vip-concierge",     icon: Crown,      label: "VIP Concierge",  badge: "VIP",   badgeType: "purple" },
+    { path: "/os",                icon: Monitor,    label: "ShadowOS Core",  badge: "OS",    badgeType: "emerald" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
