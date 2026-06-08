@@ -5,6 +5,7 @@ import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import AppShell from "./components/AppShell";
 import VoiceDeck from "./components/VoiceDeck";
+import CommandPalette from "./components/CommandPalette";
 import { lazy, Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -178,6 +179,7 @@ function Router() {
       </Suspense>
       {/* Global Voice Deck — always visible */}
       <VoiceDeck />
+      <CommandPalette />
     </AppShell>
   );
 }

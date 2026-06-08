@@ -15,6 +15,11 @@ export default function NeuralNavigationHub() {
   const [query, setQuery] = useState("");
   const [isListening, setIsListening] = useState(false);
   const [activeTab, setActiveTab] = useState("all");
+  const [recentHubs, setRecentHubs] = useState([
+    { path: "/quantum-security", label: "Quantum Vault", icon: Shield },
+    { path: "/legal-compliance", label: "Legal Engine", icon: Shield },
+    { path: "/financial", label: "Financial Hub", icon: Zap },
+  ]);
 
   const categories = [
     { id: "all", label: "All Hubs" },
@@ -112,6 +117,21 @@ export default function NeuralNavigationHub() {
             {cat.label}
           </button>
         ))}
+      </div>
+
+      {/* Recently Visited */}
+      <div className="relative z-10 max-w-6xl mx-auto mb-12">
+        <h2 className="text-[10px] text-slate-500 font-black uppercase tracking-[0.3em] mb-4">Recently Accessed Modules</h2>
+        <div className="flex gap-4 overflow-x-auto pb-4 custom-scrollbar">
+          {recentHubs.map((hub) => (
+            <Link key={hub.path} href={hub.path}>
+              <div className="flex items-center gap-3 px-6 py-3 bg-slate-900/40 border border-slate-800 rounded-xl hover:border-emerald-500 transition-all group cursor-pointer shrink-0">
+                <hub.icon className="w-4 h-4 text-slate-500 group-hover:text-emerald-400" />
+                <span className="text-xs font-bold text-slate-300 group-hover:text-white">{hub.label}</span>
+              </div>
+            </Link>
+          ))}
+        </div>
       </div>
 
       {/* Hubs Grid */}
