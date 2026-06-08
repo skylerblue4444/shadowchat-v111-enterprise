@@ -1,4 +1,5 @@
 import { create } from 'zustand';
+import { PersonalityType } from './personality-engine';
 
 /**
  * Neural Core Sync
@@ -39,6 +40,8 @@ interface EnterpriseState {
   activateUpgrade: (id: number, cost: number) => void;
   toggleSovereign: () => void;
   addActivity: (type: string, message: string) => void;
+  personality: PersonalityType;
+  setPersonality: (type: PersonalityType) => void;
 }
 
 export const useNeuralCore = create<EnterpriseState>((set) => ({
@@ -122,4 +125,6 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   addActivity: (type, message) => set((state) => ({
     recentActivity: [{ id: Math.random().toString(), type, message, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
   })),
+  personality: 'elite',
+  setPersonality: (type) => set({ personality: type }),
 }));

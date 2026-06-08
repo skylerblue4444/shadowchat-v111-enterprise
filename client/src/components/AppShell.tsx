@@ -118,6 +118,7 @@ const NAV = [
     { path: "/governance-voting", icon: Vote,       label: "Governance",  badge: "VOTE", badgeType: "purple" },
     { path: "/map",               icon: Globe,      label: "Sovereign Map", badge: "LIVE", badgeType: "emerald" },
     { path: "/cyber-defense",     icon: ShieldAlert, label: "Cyber Defense", badge: "WAR",  badgeType: "rose" },
+    { path: "/personality-matrix", icon: Brain,      label: "AI Personality", badge: "SYNC", badgeType: "cyan" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
