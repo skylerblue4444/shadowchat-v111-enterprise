@@ -114,6 +114,7 @@ const NAV = [
     { path: "/profit-models",  icon: TrendingUp,   label: "Profit Models", badge: "ROI",  badgeType: "green" },
     { path: "/charity-hub",    icon: Heart,        label: "Impact Charity", badge: "GIVE", badgeType: "red" },
     { path: "/neural-xp",      icon: Trophy,       label: "Neural XP",   badge: "LVL",  badgeType: "emerald" },
+    { path: "/defi",           icon: Wallet,       label: "DeFi Terminal", badge: "DEFI", badgeType: "cyan" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},

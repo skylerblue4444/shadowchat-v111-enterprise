@@ -30,6 +30,10 @@ interface EnterpriseState {
   // Actions
   updateSkycoin: (amount: number) => void;
   updateManusCoin: (amount: number) => void;
+  mineSkycoin: () => void;
+  stakeSkycoin: (amount: number) => void;
+  burnSkycoin: (amount: number) => void;
+  tipSkycoin: (amount: number, recipient: string) => void;
   addXP: (amount: number) => void;
   unlockAchievement: (id: string) => void;
   activateUpgrade: (id: number, cost: number) => void;
@@ -57,6 +61,44 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   
   updateSkycoin: (amount) => set((state) => ({ skycoin: state.skycoin + amount })),
   updateManusCoin: (amount) => set((state) => ({ manusCoin: state.manusCoin + amount })),
+  mineSkycoin: () => set((state) => {
+    const reward = 4.44 + (Math.random() * 10);
+    return { 
+      skycoin: state.skycoin + reward,
+      neuralXP: state.neuralXP + 5,
+      recentActivity: [{ id: Math.random().toString(), type: 'MIN', message: `Mined ${reward.toFixed(2)} SKY via Neural Compute.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
+    };
+  }),
+  stakeSkycoin: (amount) => set((state) => {
+    if (state.skycoin >= amount) {
+      return { 
+        skycoin: state.skycoin - amount,
+        neuralXP: state.neuralXP + (amount * 0.1),
+        recentActivity: [{ id: Math.random().toString(), type: 'STK', message: `Staked ${amount} SKY for 12.4% APY.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
+      };
+    }
+    return state;
+  }),
+  burnSkycoin: (amount) => set((state) => {
+    if (state.skycoin >= amount) {
+      return { 
+        skycoin: state.skycoin - amount,
+        neuralPowerLevel: state.neuralPowerLevel + (amount * 0.5),
+        recentActivity: [{ id: Math.random().toString(), type: 'BRN', message: `Burned ${amount} SKY to increase Neural Power.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
+      };
+    }
+    return state;
+  }),
+  tipSkycoin: (amount, recipient) => set((state) => {
+    if (state.skycoin >= amount) {
+      return { 
+        skycoin: state.skycoin - amount,
+        neuralXP: state.neuralXP + (amount * 0.2),
+        recentActivity: [{ id: Math.random().toString(), type: 'TIP', message: `Tipped ${amount} SKY to ${recipient}.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
+      };
+    }
+    return state;
+  }),
   addXP: (amount) => set((state) => {
     const newXP = state.neuralXP + amount;
     const newLevel = Math.floor(newXP / 1000);

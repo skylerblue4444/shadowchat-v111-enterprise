@@ -93,6 +93,7 @@ const UpgradeMatrix = lazy(() => import("./pages/UpgradeMatrix"));
 const EconomicProfitHub = lazy(() => import("./pages/EconomicProfitHub"));
 const CharityTransparencyHub = lazy(() => import("./pages/CharityTransparencyHub"));
 const GamificationHub = lazy(() => import("./pages/GamificationHub"));
+const DeFiTerminal = lazy(() => import("./pages/DeFiTerminal"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -196,6 +197,7 @@ function Router() {
           <Route path="/profit-models" component={EconomicProfitHub} />
           <Route path="/charity-hub" component={CharityTransparencyHub} />
           <Route path="/neural-xp" component={GamificationHub} />
+          <Route path="/defi" component={DeFiTerminal} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
