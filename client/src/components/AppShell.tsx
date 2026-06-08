@@ -103,6 +103,8 @@ const NAV = [
     { path: "/dev-workspace-enterprise", icon: Code2, label: "Dev Workspace", badge: "PRO", badgeType: "cyan" },
     { path: "/adult",         icon: Lock,          label: "Adult Area",    badge: "18+", badgeType: "red" },
     { path: "/admin",         icon: Shield,        label: "Admin Panel",  badge: "ROOT", badgeType: "red" },
+    { path: "/admin-control", icon: Shield,        label: "Admin Control", badge: "HQ",  badgeType: "purple" },
+    { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
 ];

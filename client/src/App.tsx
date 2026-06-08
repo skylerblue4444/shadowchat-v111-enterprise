@@ -82,6 +82,8 @@ const EducationAcademy = lazy(() => import("./pages/EducationAcademy"));
 const GamingPuzzleHub = lazy(() => import("./pages/GamingPuzzleHub"));
 const EventsHub = lazy(() => import("./pages/EventsHub"));
 const NeuralNavigationHub = lazy(() => import("./pages/NeuralNavigationHub"));
+const EnterpriseLogin = lazy(() => import("./pages/EnterpriseLogin"));
+const AdminControlCenter = lazy(() => import("./pages/AdminControlCenter"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -174,6 +176,8 @@ function Router() {
           <Route path="/gaming" component={GamingPuzzleHub} />
           <Route path="/events-hub" component={EventsHub} />
           <Route path="/neural-nav" component={NeuralNavigationHub} />
+          <Route path="/login" component={EnterpriseLogin} />
+          <Route path="/admin-control" component={AdminControlCenter} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
