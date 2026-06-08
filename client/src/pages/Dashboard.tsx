@@ -9,7 +9,7 @@ import {
   Brain, TrendingUp, TrendingDown, Users, Activity, Zap,
   ShoppingBag, Wallet, MessageSquare, Heart, Video, Shield,
   BarChart3, Bot, Vote, Lock, Cpu, Server, Globe, ArrowUpRight,
-  AlertCircle, CheckCircle2, Clock, Coins, Flame, Star
+  AlertCircle, CheckCircle2, Clock, Coins, Flame, Star, Calendar
 } from "lucide-react";
 import { useAuth } from "@/_core/hooks/useAuth";
 import { trpc } from "@/lib/trpc";
@@ -32,18 +32,18 @@ const ANALYTICS_DATA = {
 
 
 const MODULES = [
-  { path: "/feed",          icon: MessageSquare, label: "Social Feed",       color: "cyan",   stat: "24.8K posts/day" },
-  { path: "/wallet",        icon: Wallet,        label: "Wallet",            color: "gold",   stat: "$142K balance" },
-  { path: "/marketplace",   icon: ShoppingBag,   label: "Marketplace",       color: "purple", stat: "$8.4M volume" },
-  { path: "/ai-core",       icon: Brain,         label: "HOPE AI",           color: "cyan",   stat: "14 tasks active" },
-  { path: "/dating",        icon: Heart,         label: "Dating",            color: "red",    stat: "847 matches" },
-  { path: "/live",          icon: Video,         label: "Live Video",        color: "green",  stat: "12 live now" },
-  { path: "/analytics",     icon: BarChart3,     label: "Analytics",         color: "gold",   stat: "99.97% uptime" },
-  { path: "/governance",    icon: Vote,          label: "Governance",        color: "purple", stat: "2 active votes" },
-  { path: "/ai-agents",     icon: Bot,           label: "AI Agents",         color: "cyan",   stat: "5 running" },
-  { path: "/security",      icon: Lock,          label: "Security",          color: "green",  stat: "All clear" },
-  { path: "/digital-twin",  icon: Cpu,           label: "Digital Twin",      color: "purple", stat: "97% accuracy" },
-  { path: "/admin",         icon: Shield,        label: "Admin Panel",       color: "red",    stat: "ROOT access" },
+  { path: "/legal-compliance", icon: Shield,        label: "Legal Engine",    color: "green",  stat: "100% compliant" },
+  { path: "/financial",        icon: Wallet,        label: "Financial Hub",   color: "cyan",   stat: "$2.4B AUM" },
+  { path: "/supply-chain",     icon: Server,        label: "Supply Chain",    color: "gold",   stat: "1,245 active" },
+  { path: "/talent-market",    icon: Users,         label: "Talent Market",   color: "purple", stat: "450K+ talent" },
+  { path: "/quantum-security", icon: Lock,          label: "Quantum Vault",   color: "red",    stat: "Quantum-Safe" },
+  { path: "/research",         icon: FlaskConical,  label: "Research Lab",    color: "cyan",   stat: "245 projects" },
+  { path: "/geopolitical",     icon: Globe,         label: "Geopolitical",    color: "gold",   stat: "195 countries" },
+  { path: "/workforce",        icon: Activity,      label: "Workforce",       color: "green",  stat: "94.3% prod." },
+  { path: "/sustainability",   icon: Zap,           label: "Sustainability",  color: "green",  stat: "Carbon Neg." },
+  { path: "/healthcare",       icon: Heart,         label: "Healthcare",      color: "red",    stat: "99.2% acc." },
+  { path: "/gaming",           icon: Coins,         label: "Gaming Hub",      color: "gold",   stat: "4444 Start" },
+  { path: "/events-hub",       icon: Calendar,      label: "Events Hub",      color: "red",    stat: "LIVE Events" },
 ];
 
 const COLOR_MAP: Record<string, { bg: string; text: string; border: string; glow: string }> = {

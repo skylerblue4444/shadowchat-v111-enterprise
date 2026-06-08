@@ -15,7 +15,7 @@ import {
   Database, Workflow, AlertTriangle, Globe, Navigation, Flag,
   ChevronLeft, ChevronRight, Menu, X, Activity, Coins,
   TrendingUp, Trophy, Calendar, Code2, ToggleLeft, Star, Users, Spade,
-  Radio, DollarSign, Share2, Sparkles
+  Radio, DollarSign, Share2, Sparkles, GraduationCap
 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -65,6 +65,25 @@ const NAV = [
     { path: "/reputation",  icon: Activity, label: "Reputation" },
     { path: "/referrals",   icon: Users,    label: "Referrals" },
   ]},
+  { section: "ENTERPRISE INFRASTRUCTURE", items: [
+    { path: "/legal-compliance", icon: Shield,        label: "Legal Engine",    badge: "LAW", badgeType: "green" },
+    { path: "/financial",        icon: DollarSign,     label: "Financial Hub",   badge: "BANK", badgeType: "cyan" },
+    { path: "/supply-chain",     icon: Server,         label: "Supply Chain",    badge: "LOG", badgeType: "green" },
+    { path: "/talent-market",    icon: Users,          label: "Talent Market",   badge: "HR",  badgeType: "cyan" },
+    { path: "/quantum-security", icon: Lock,           label: "Quantum Vault",   badge: "SEC", badgeType: "red" },
+    { path: "/research",         icon: FlaskConical,   label: "Research Lab",    badge: "R&D", badgeType: "purple" },
+    { path: "/geopolitical",     icon: Globe,          label: "Geopolitical",    badge: "INTEL", badgeType: "cyan" },
+    { path: "/workforce",        icon: Activity,       label: "Workforce",       badge: "OPS", badgeType: "green" },
+    { path: "/sustainability",   icon: Zap,            label: "Sustainability",  badge: "ESG", badgeType: "green" },
+    { path: "/healthcare",       icon: Heart,          label: "Healthcare",      badge: "MED", badgeType: "red" },
+    { path: "/academy",          icon: GraduationCap,  label: "Academy Hub",     badge: "EDU", badgeType: "cyan" },
+  ]},
+  { section: "GAMING & EVENTS", items: [
+    { path: "/gaming",           icon: Spade,          label: "Gaming Hub",      badge: "4444", badgeType: "green" },
+    { path: "/events-hub",       icon: Calendar,       label: "Events Hub",      badge: "LIVE", badgeType: "red" },
+    { path: "/blackjack",        icon: Spade,          label: "Blackjack",       badge: "🃏",   badgeType: "count" },
+    { path: "/casino",           icon: Spade,          label: "Casino Hub",      badge: "🎰",   badgeType: "count" },
+  ]},
   { section: "PLATFORM", items: [
     { path: "/events",        icon: Calendar,      label: "Events & Spaces" },
     { path: "/subscriptions", icon: Zap,           label: "Subscriptions" },
@@ -74,7 +93,6 @@ const NAV = [
     { path: "/sandbox",        icon: FlaskConical,  label: "Sandbox Zone" },
     { path: "/skyworld",       icon: Globe,         label: "SkyWorld",        badge: "3D",  badgeType: "cyan" },
     { path: "/plugins",        icon: Database,      label: "Plugin Market",   badge: "NEW", badgeType: "green" },
-    { path: "/blackjack",     icon: Spade,         label: "Blackjack Casino", badge: "🃏", badgeType: "count" },
     { path: "/charity",       icon: Heart,         label: "Charity",       badge: "❤️",  badgeType: "green" },
     { path: "/ico",           icon: TrendingUp,    label: "ICO Portal",    badge: "🚀",  badgeType: "count" },
     { path: "/wise-payments", icon: Globe,         label: "Wise Payments" },
