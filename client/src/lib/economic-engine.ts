@@ -76,10 +76,10 @@ export class EconomicEngine {
   initializeUser(userId: string): UserBalance {
     const balance: UserBalance = {
       userId,
-      coins: 1000, // Starting coins
-      credits: 100, // Starting credits
-      gems: 10, // Starting gems
-      totalEarned: 1000,
+      coins: 4444, // Starting coins (ShadowChat v1111 Standard)
+      credits: 444, // Starting credits
+      gems: 44, // Starting gems
+      totalEarned: 4444,
       totalSpent: 0,
       totalTipped: 0,
       totalCharityDonated: 0,
