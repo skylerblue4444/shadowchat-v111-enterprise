@@ -84,6 +84,8 @@ const EventsHub = lazy(() => import("./pages/EventsHub"));
 const NeuralNavigationHub = lazy(() => import("./pages/NeuralNavigationHub"));
 const EnterpriseLogin = lazy(() => import("./pages/EnterpriseLogin"));
 const AdminControlCenter = lazy(() => import("./pages/AdminControlCenter"));
+const JudicialArbitrationHub = lazy(() => import("./pages/JudicialArbitrationHub"));
+const DisasterRecoveryHub = lazy(() => import("./pages/DisasterRecoveryHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -178,6 +180,8 @@ function Router() {
           <Route path="/neural-nav" component={NeuralNavigationHub} />
           <Route path="/login" component={EnterpriseLogin} />
           <Route path="/admin-control" component={AdminControlCenter} />
+          <Route path="/judicial" component={JudicialArbitrationHub} />
+          <Route path="/recovery" component={DisasterRecoveryHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
