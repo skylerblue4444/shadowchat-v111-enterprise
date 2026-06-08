@@ -121,6 +121,8 @@ const AutonomousAgentHub = lazy(() => import("./pages/AutonomousAgentHub"));
 const UnifiedMarketplace = lazy(() => import("./pages/UnifiedMarketplace"));
 const SovereignValuationHub = lazy(() => import("./pages/SovereignValuationHub"));
 const SovereignPrime = lazy(() => import("./pages/SovereignPrime"));
+const Sovereign44xCommandHub = lazy(() => import("./pages/Sovereign44xCommandHub"));
+const HOPEAvatarHub   = lazy(() => import("./pages/HOPEAvatarHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -230,6 +232,8 @@ function Router() {
           <Route path="/map" component={SovereignMap} />
           <Route path="/cyber-defense" component={CyberDefenseCenter} />
           <Route path="/personality-matrix" component={PersonalityMatrixHub} />
+	          <Route path="/hope-avatar" component={HOPEAvatarHub} />
+            <Route path="/44x-command" component={Sovereign44xCommandHub} />
           <Route path="/unhinged-trading" component={UnhingedTradingHub} />
           <Route path="/hacker-feed" component={HackerFeedHub} />
           <Route path="/audio-hub" component={SovereignAudioHub} />

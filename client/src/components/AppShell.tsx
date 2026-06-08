@@ -27,6 +27,7 @@ const NAV = [
     { path: "/",              icon: Sparkles,        label: "PRIME CORE", badge: "ONE",  badgeType: "emerald" },
     { path: "/dashboard",     icon: LayoutDashboard, label: "Terminal",  badge: "LIVE", badgeType: "green" },
     { path: "/neural-nav",     icon: Navigation,      label: "Neural Nav", badge: "SYNC", badgeType: "cyan" },
+    { path: "/44x-command",    icon: Zap,             label: "44x Command", badge: "44X", badgeType: "red" },
     { path: "/feed",          icon: MessageSquare,   label: "Global Feed" },
     { path: "/explore",       icon: Compass,         label: "Intelligence" },
     { path: "/notifications", icon: Bell,            label: "Activity",   badgeType: "count" },
@@ -49,6 +50,7 @@ const NAV = [
   ]},
   { section: "AI & INTELLIGENCE", items: [
     { path: "/ai-core",      icon: Brain,     label: "HOPE AI Core",    badge: "AI",   badgeType: "cyan" },
+    { path: "/hope-avatar",   icon: User,      label: "HOPE Avatar",     badge: "SYNC", badgeType: "emerald" },
     { path: "/ai-evolution",  icon: Zap,       label: "AI Evolution",    badge: "EVO",  badgeType: "emerald" },
     { path: "/agents",        icon: Bot,       label: "Auto Agents",     badge: "ASA",  badgeType: "cyan" },
     { path: "/ai-ide",       icon: Code2,     label: "AI Engineer IDE", badge: "PRO",  badgeType: "cyan" },
