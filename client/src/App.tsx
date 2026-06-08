@@ -108,6 +108,9 @@ const NeuralMarketplace = lazy(() => import("./pages/NeuralMarketplace"));
 const SovereignIntelligenceAgency = lazy(() => import("./pages/SovereignIntelligenceAgency"));
 const FeatureFactoryHub = lazy(() => import("./pages/FeatureFactoryHub"));
 const SovereignIdentityVault = lazy(() => import("./pages/SovereignIdentityVault"));
+const SovereignArtifactForge = lazy(() => import("./pages/SovereignArtifactForge"));
+const SovereignCentralBank = lazy(() => import("./pages/SovereignCentralBank"));
+const EliteVIPConcierge = lazy(() => import("./pages/EliteVIPConcierge"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -225,6 +228,9 @@ function Router() {
           <Route path="/intel-agency" component={SovereignIntelligenceAgency} />
           <Route path="/feature-factory" component={FeatureFactoryHub} />
           <Route path="/identity-vault" component={SovereignIdentityVault} />
+          <Route path="/artifact-forge" component={SovereignArtifactForge} />
+          <Route path="/central-bank" component={SovereignCentralBank} />
+          <Route path="/vip-concierge" component={EliteVIPConcierge} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
