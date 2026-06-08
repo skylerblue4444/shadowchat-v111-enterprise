@@ -102,6 +102,7 @@ const UnhingedTradingHub = lazy(() => import("./pages/UnhingedTradingHub"));
 const HackerFeedHub = lazy(() => import("./pages/HackerFeedHub"));
 const SovereignAudioHub = lazy(() => import("./pages/SovereignAudioHub"));
 const AIEvolutionLab = lazy(() => import("./pages/AIEvolutionLab"));
+const SovereignExpansionHub = lazy(() => import("./pages/SovereignExpansionHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -214,6 +215,7 @@ function Router() {
           <Route path="/hacker-feed" component={HackerFeedHub} />
           <Route path="/audio-hub" component={SovereignAudioHub} />
           <Route path="/ai-evolution" component={AIEvolutionLab} />
+          <Route path="/expansion" component={SovereignExpansionHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>

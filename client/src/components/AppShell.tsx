@@ -123,6 +123,7 @@ const NAV = [
     { path: "/hacker-feed",        icon: Terminal,   label: "Hacker Feed",    badge: "LIVE", badgeType: "emerald" },
     { path: "/audio-hub",         icon: Headphones, label: "Audio & Voice",  badge: "HI-FI", badgeType: "purple" },
     { path: "/ai-evolution",      icon: Brain,      label: "AI Evolution",   badge: "EVO",  badgeType: "emerald" },
+    { path: "/expansion",         icon: Rocket,     label: "Expansion Hub",  badge: "GROW", badgeType: "cyan" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
