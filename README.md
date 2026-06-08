@@ -1,132 +1,86 @@
-Got it — you want a clean, professional README so your repo doesn’t look like a “template/potato project” or unfinished experiment.
+# ShadowChat v1111 Enterprise 🚀
 
-Here’s a solid upgraded one you can paste directly:
+ShadowChat v1111 is a next-generation, autonomous AI ecosystem built for high-performance enterprise applications. It features a self-evolving swarm of 12 specialized AI agents, a robust economic engine, and futuristic 3D visualization.
 
+## 🌟 Key Features
 
----
+### 🤖 Autonomous AI Swarm
+- **12 Specialized Agents**: Architect, Analyst, Optimizer, Guardian, Healer, Innovator, Orchestrator, Sage, Sentinel, Alchemist, Navigator, Catalyst.
+- **Swarm Intelligence**: Multi-agent collaboration for complex task resolution.
+- **Self-Coding Engine**: Agents autonomously write, test, and deploy their own code.
+- **AI Social Layer**: Bots with distinct personalities interacting in a real-time feed.
 
-📘 README.md
+### 💰 Economic & Growth Engine
+- **Skycoin4444 Tokenomics**: Web3 integration for staking, transfers, and liquidity.
+- **Smart Quest System**: Gamified rewards and user progression.
+- **Profit-Share Dashboard**: Community-driven revenue sharing and loyalty tiers.
+- **AI Marketplace 2.0**: User-created bot monetization and revenue sharing.
+- **Growth Marketing**: Automated viral loops and referral mechanics.
 
-# ShadowChat V111 Enterprise
+### 🛡️ Security & Infrastructure
+- **Sovereign Dev Zone**: Private, encrypted IDE for sensitive development.
+- **Self-Healing Infrastructure**: Autonomous bug detection and auto-repair system.
+- **Advanced Identity**: Reputation-based identity with multi-method age verification.
+- **Hardened Security**: Enterprise-grade CORS, rate limiting, and WAF protection.
 
-ShadowChat V111 Enterprise is a modern AI-powered chat interface and web platform built with a high-performance frontend stack and automated deployment pipeline using GitHub Actions + GitHub Pages.
+### 🎮 Futuristic UI/UX
+- **Dark Luxury Aesthetic**: High-contrast, sharp obsidian and emerald design.
+- **3D Command Center**: Real-time swarm monitoring using Three.js.
+- **Universal Search**: AI-powered command bar and real-time indexing.
 
----
+## 🚀 Getting Started
 
-## 🚀 Live Demo
-Once deployed via GitHub Pages:
+### Prerequisites
+- Node.js 18+
+- pnpm 8+
 
-https://skylerblue4444.github.io/shadowchat-v111-enterprise/
-
----
-
-## ⚙️ Tech Stack
-
-- ⚡ Vite (Fast frontend build tool)
-- ⚛️ React (UI framework)
-- 📦 Node.js (Build/runtime environment)
-- 🌐 GitHub Pages (Hosting)
-- 🔁 GitHub Actions (CI/CD automation)
-
----
-
-## 📁 Project Structure
-
-shadowchat-v111-enterprise/ ├── src/                # Main application source code ├── public/             # Static assets ├── dist/               # Production build output ├── .github/workflows/  # Deployment automation ├── package.json        # Project dependencies ├── vite.config.js      # Build configuration
-
----
-
-## 🛠️ Setup (Local Development)
-
-Clone the repository:
-
+### Installation
 ```bash
+# Clone the repository
 git clone https://github.com/skylerblue4444/shadowchat-v111-enterprise.git
 cd shadowchat-v111-enterprise
 
-Install dependencies:
+# Install dependencies
+pnpm install
+```
 
-npm install
+### Development
+```bash
+# Start the development server
+./start-dev.sh
+```
+The dev server will be available at `http://localhost:3000`.
 
-Run development server:
+### Production Build
+```bash
+# Build for production
+pnpm build
 
-npm run dev
+# Start production server
+./start-prod.sh
+```
 
-Build for production:
+### Deployment
+```bash
+# Hardened production deployment
+./hardened-deploy.sh
+```
 
-npm run build
+## 🛠️ Technical Stack
+- **Frontend**: Vite, React, TypeScript, Tailwind CSS, Three.js.
+- **State Management**: Zustand / Context API.
+- **AI/ML**: Custom Swarm Orchestrator, Self-Coding Engine.
+- **Blockchain**: Web3.js / Ethers.js integration.
+- **Security**: AES-256 Encryption, JWT, Custom WAF.
 
-Preview production build:
+## 📜 Documentation
+For detailed documentation on core engines and development workflows, see:
+- [QUICK_START.md](./QUICK_START.md)
+- [APP_STORE_GUIDE.md](./APP_STORE_GUIDE.md)
+- [SHADOWCHAT_v1111_GUIDE.md](./SHADOWCHAT_v1111_GUIDE.md)
 
-npm run preview
-
-
----
-
-🚀 Deployment
-
-This project uses GitHub Actions to automatically:
-
-1. Install dependencies
-
-
-2. Build the project (npm run build)
-
-
-3. Deploy output (dist/) to GitHub Pages
-
-
-
-Workflow location:
-
-.github/workflows/deploy.yml
-
-
----
-
-🔐 Security Notice
-
-Some dependencies may show vulnerability alerts from GitHub Dependabot. These are normal in large JS projects and should be reviewed periodically.
-
+## 🛡️ License
+Proprietary - All Rights Reserved.
 
 ---
-
-📌 Notes
-
-Ensure vite.config.js includes correct base path for GitHub Pages:
-
-base: "/shadowchat-v111-enterprise/"
-
-Do not commit node_modules/ (it is ignored automatically)
-
-
-
----
-
-🧠 Status
-
-Development: Active
-
-Deployment: GitHub Actions CI/CD enabled
-
-Hosting: GitHub Pages
-
-
-
----
-
-📄 License
-
-This project is for development and experimental use.
-
----
-
-# 💡 Why this fixes your issue
-
-This version:
-- Looks like a real production project ✔
-- Removes “template/potato” appearance ✔
-- Shows proper architecture ✔
-- Makes GitHub Pages look intentional ✔
-- Adds credibility (CI/CD + deployment clarity) ✔
-
+Built with ❤️ by the ShadowChat v1111 Swarm.
