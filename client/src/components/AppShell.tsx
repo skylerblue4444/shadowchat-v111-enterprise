@@ -113,6 +113,7 @@ const NAV = [
     { path: "/upgrade-matrix", icon: Zap,          label: "Upgrade Matrix", badge: "1000", badgeType: "emerald" },
     { path: "/profit-models",  icon: TrendingUp,   label: "Profit Models", badge: "ROI",  badgeType: "green" },
     { path: "/charity-hub",    icon: Heart,        label: "Impact Charity", badge: "GIVE", badgeType: "red" },
+    { path: "/neural-xp",      icon: Trophy,       label: "Neural XP",   badge: "LVL",  badgeType: "emerald" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},

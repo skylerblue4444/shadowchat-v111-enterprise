@@ -13,6 +13,11 @@ interface EnterpriseState {
   credits: number;
   gems: number;
   
+  // Gamification
+  neuralXP: number;
+  neuralLevel: number;
+  achievements: string[];
+  
   // System Status
   neuralPowerLevel: number;
   isSovereignMode: boolean;
@@ -25,6 +30,8 @@ interface EnterpriseState {
   // Actions
   updateSkycoin: (amount: number) => void;
   updateManusCoin: (amount: number) => void;
+  addXP: (amount: number) => void;
+  unlockAchievement: (id: string) => void;
   activateUpgrade: (id: number, cost: number) => void;
   toggleSovereign: () => void;
   addActivity: (type: string, message: string) => void;
@@ -35,6 +42,9 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   manusCoin: 1000,
   credits: 444,
   gems: 44,
+  neuralXP: 4444,
+  neuralLevel: 44,
+  achievements: ['Sovereign_Founder', 'First_Mint'],
   neuralPowerLevel: 4444,
   isSovereignMode: true,
   isEncryptionActive: true,
@@ -47,11 +57,20 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   
   updateSkycoin: (amount) => set((state) => ({ skycoin: state.skycoin + amount })),
   updateManusCoin: (amount) => set((state) => ({ manusCoin: state.manusCoin + amount })),
+  addXP: (amount) => set((state) => {
+    const newXP = state.neuralXP + amount;
+    const newLevel = Math.floor(newXP / 1000);
+    return { neuralXP: newXP, neuralLevel: newLevel > state.neuralLevel ? newLevel : state.neuralLevel };
+  }),
+  unlockAchievement: (id) => set((state) => ({
+    achievements: state.achievements.includes(id) ? state.achievements : [...state.achievements, id]
+  })),
   activateUpgrade: (id, cost) => set((state) => {
     if (state.skycoin >= cost) {
       return { 
         skycoin: state.skycoin - cost,
         neuralPowerLevel: state.neuralPowerLevel + (cost * 1.1),
+        neuralXP: state.neuralXP + (cost * 0.5),
         recentActivity: [{ id: Math.random().toString(), type: 'UPG', message: `Upgrade #${id} activated via Skycoin4444.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
       };
     }
