@@ -21,6 +21,7 @@ interface EnterpriseState {
   
   // System Status
   neuralPowerLevel: number;
+  charityImpact: number;
   isSovereignMode: boolean;
   isEncryptionActive: boolean;
   isSelfHealingActive: boolean;
@@ -29,7 +30,7 @@ interface EnterpriseState {
   recentActivity: Array<{ id: string; type: string; message: string; time: string }>;
   
   // Actions
-  updateSkycoin: (amount: number) => void;
+  updateSkycoin: (amount: number, skipCharity?: boolean) => void;
   updateManusCoin: (amount: number) => void;
   mineSkycoin: () => void;
   stakeSkycoin: (amount: number) => void;
@@ -53,6 +54,7 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   neuralLevel: 44,
   achievements: ['Sovereign_Founder', 'First_Mint'],
   neuralPowerLevel: 4444,
+  charityImpact: 444,
   isSovereignMode: true,
   isEncryptionActive: true,
   isSelfHealingActive: true,
@@ -62,7 +64,20 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
     { id: '3', type: 'FIN', message: 'Automated trade executed: +45.2 SKY.', time: '12m ago' },
   ],
   
-  updateSkycoin: (amount) => set((state) => ({ skycoin: state.skycoin + amount })),
+  updateSkycoin: (amount, skipCharity = false) => set((state) => {
+    // 4.44% Automatic Charity Diversion on all positive inflows
+    const charityCut = (!skipCharity && amount > 0) ? amount * 0.0444 : 0;
+    const finalAmount = amount - charityCut;
+    
+    return { 
+      skycoin: state.skycoin + finalAmount,
+      charityImpact: state.charityImpact + charityCut,
+      neuralPowerLevel: state.neuralPowerLevel + (charityCut * 2), // Charity boosts power
+      recentActivity: charityCut > 0 ? 
+        [{ id: Math.random().toString(), type: 'GIVE', message: `Automatically diverted ${charityCut.toFixed(2)} SKY to Charity.`, time: 'Just now' }, ...state.recentActivity.slice(0, 9)] : 
+        state.recentActivity
+    };
+  }),
   updateManusCoin: (amount) => set((state) => ({ manusCoin: state.manusCoin + amount })),
   mineSkycoin: () => set((state) => {
     const reward = 4.44 + (Math.random() * 10);

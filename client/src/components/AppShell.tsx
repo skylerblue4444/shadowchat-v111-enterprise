@@ -135,6 +135,7 @@ const NAV = [
     { path: "/extractor",         icon: Pickaxe,    label: "Resource Extractor", badge: "MINT", badgeType: "amber" },
     { path: "/trade-terminal",    icon: Globe,      label: "Trade Terminal", badge: "TRADE", badgeType: "cyan" },
     { path: "/patent-lab",        icon: Lightbulb,  label: "Patent Lab",     badge: "R&D",   badgeType: "purple" },
+    { path: "/philanthropy",      icon: Heart,      label: "Philanthropy",   badge: "GIVE",  badgeType: "rose" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},
