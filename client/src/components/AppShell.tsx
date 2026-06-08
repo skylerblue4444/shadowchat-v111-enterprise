@@ -109,6 +109,8 @@ const NAV = [
     { path: "/recovery",      icon: Satellite,     label: "Planetary Sync", badge: "SYNC", badgeType: "cyan" },
     { path: "/elite-club",    icon: Crown,         label: "Elite Club",  badge: "VIP",  badgeType: "gold" },
     { path: "/auction-house", icon: Gavel,         label: "Auction House", badge: "LIVE", badgeType: "amber" },
+    { path: "/treasury",      icon: Landmark,      label: "Manus Treasury", badge: "MINT", badgeType: "cyan" },
+    { path: "/upgrade-matrix", icon: Zap,          label: "Upgrade Matrix", badge: "1000", badgeType: "emerald" },
     { path: "/login",         icon: Lock,          label: "Sovereign Login", badge: "SEC", badgeType: "red" },
     { path: "/settings",      icon: Settings,      label: "Settings" },
   ]},

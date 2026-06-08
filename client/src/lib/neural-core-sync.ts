@@ -9,6 +9,7 @@ import { create } from 'zustand';
 interface EnterpriseState {
   // Economic Core
   skycoin: number;
+  manusCoin: number;
   credits: number;
   gems: number;
   
@@ -22,12 +23,14 @@ interface EnterpriseState {
   
   // Actions
   updateSkycoin: (amount: number) => void;
+  updateManusCoin: (amount: number) => void;
   toggleSovereign: () => void;
   addActivity: (type: string, message: string) => void;
 }
 
 export const useNeuralCore = create<EnterpriseState>((set) => ({
   skycoin: 4444,
+  manusCoin: 1000,
   credits: 444,
   gems: 44,
   isSovereignMode: true,
@@ -40,6 +43,7 @@ export const useNeuralCore = create<EnterpriseState>((set) => ({
   ],
   
   updateSkycoin: (amount) => set((state) => ({ skycoin: state.skycoin + amount })),
+  updateManusCoin: (amount) => set((state) => ({ manusCoin: state.manusCoin + amount })),
   toggleSovereign: () => set((state) => ({ isSovereignMode: !state.isSovereignMode })),
   addActivity: (type, message) => set((state) => ({
     recentActivity: [{ id: Math.random().toString(), type, message, time: 'Just now' }, ...state.recentActivity.slice(0, 9)]
