@@ -6,6 +6,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import AppShell from "./components/AppShell";
 import VoiceDeck from "./components/VoiceDeck";
 import CommandPalette from "./components/CommandPalette";
+import SovereignHUD from "./components/SovereignHUD";
 import { lazy, Suspense } from "react";
 import { Loader2 } from "lucide-react";
 
@@ -222,6 +223,7 @@ function Router() {
       {/* Global Voice Deck — always visible */}
       <VoiceDeck />
       <CommandPalette />
+      <SovereignHUD />
     </AppShell>
   );
 }
