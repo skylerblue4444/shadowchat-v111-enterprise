@@ -24,7 +24,8 @@ const LOGO_URL = "https://d2xsxph8kpxj0f.cloudfront.net/310519663608806484/6N4Qj
 
 const NAV = [
   { section: "COMMAND", items: [
-    { path: "/",              icon: LayoutDashboard, label: "Terminal",  badge: "LIVE", badgeType: "green" },
+    { path: "/",              icon: Sparkles,        label: "PRIME CORE", badge: "ONE",  badgeType: "emerald" },
+    { path: "/dashboard",     icon: LayoutDashboard, label: "Terminal",  badge: "LIVE", badgeType: "green" },
     { path: "/neural-nav",     icon: Navigation,      label: "Neural Nav", badge: "SYNC", badgeType: "cyan" },
     { path: "/feed",          icon: MessageSquare,   label: "Global Feed" },
     { path: "/explore",       icon: Compass,         label: "Intelligence" },

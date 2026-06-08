@@ -120,6 +120,7 @@ const PhilanthropyHub = lazy(() => import("./pages/PhilanthropyHub"));
 const AutonomousAgentHub = lazy(() => import("./pages/AutonomousAgentHub"));
 const UnifiedMarketplace = lazy(() => import("./pages/UnifiedMarketplace"));
 const SovereignValuationHub = lazy(() => import("./pages/SovereignValuationHub"));
+const SovereignPrime = lazy(() => import("./pages/SovereignPrime"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -138,7 +139,8 @@ function Router() {
     <AppShell>
       <Suspense fallback={<PageLoader />}>
         <Switch>
-          <Route path="/"               component={Dashboard} />
+                    <Route path="/" component={SovereignPrime} />
+          <Route path="/dashboard" component={Dashboard} />
           <Route path="/feed"           component={SocialFeed} />
           <Route path="/dating"         component={Dating} />
           <Route path="/marketplace"    component={Marketplace} />
@@ -248,6 +250,7 @@ function Router() {
           <Route path="/agents" component={AutonomousAgentHub} />
           <Route path="/unified-market" component={UnifiedMarketplace} />
           <Route path="/valuation" component={SovereignValuationHub} />
+          <Route path="/prime" component={SovereignPrime} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
