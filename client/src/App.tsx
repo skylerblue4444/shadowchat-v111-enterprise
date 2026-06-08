@@ -112,6 +112,9 @@ const SovereignArtifactForge = lazy(() => import("./pages/SovereignArtifactForge
 const SovereignCentralBank = lazy(() => import("./pages/SovereignCentralBank"));
 const EliteVIPConcierge = lazy(() => import("./pages/EliteVIPConcierge"));
 const ShadowOS = lazy(() => import("./pages/ShadowOS"));
+const ResourceExtractorHub = lazy(() => import("./pages/ResourceExtractorHub"));
+const GlobalTradeTerminal = lazy(() => import("./pages/GlobalTradeTerminal"));
+const ElitePatentLab = lazy(() => import("./pages/ElitePatentLab"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -233,6 +236,9 @@ function Router() {
           <Route path="/central-bank" component={SovereignCentralBank} />
           <Route path="/vip-concierge" component={EliteVIPConcierge} />
           <Route path="/os" component={ShadowOS} />
+          <Route path="/extractor" component={ResourceExtractorHub} />
+          <Route path="/trade-terminal" component={GlobalTradeTerminal} />
+          <Route path="/patent-lab" component={ElitePatentLab} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
