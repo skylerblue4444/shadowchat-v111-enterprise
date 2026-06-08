@@ -71,6 +71,13 @@ const LegalComplianceEngine = lazy(() => import("./pages/LegalComplianceEngine")
 const SupplyChainHub = lazy(() => import("./pages/SupplyChainHub"));
 const TalentMarketplace = lazy(() => import("./pages/TalentMarketplace"));
 const QuantumSecurityVault = lazy(() => import("./pages/QuantumSecurityVault"));
+const FinancialIntelligenceHub = lazy(() => import("./pages/FinancialIntelligenceHub"));
+const ResearchLabPage = lazy(() => import("./pages/ResearchLabPage"));
+const GeopoliticalIntelligenceCenter = lazy(() => import("./pages/GeopoliticalIntelligenceCenter"));
+const WorkforceManagementHub = lazy(() => import("./pages/WorkforceManagementHub"));
+const SustainabilityHub = lazy(() => import("./pages/SustainabilityHub"));
+const HealthcareWellnessHub = lazy(() => import("./pages/HealthcareWellnessHub"));
+const EducationAcademy = lazy(() => import("./pages/EducationAcademy"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -153,6 +160,13 @@ function Router() {
           <Route path="/supply-chain" component={SupplyChainHub} />
           <Route path="/talent-market" component={TalentMarketplace} />
           <Route path="/quantum-security" component={QuantumSecurityVault} />
+          <Route path="/financial" component={FinancialIntelligenceHub} />
+          <Route path="/research" component={ResearchLabPage} />
+          <Route path="/geopolitical" component={GeopoliticalIntelligenceCenter} />
+          <Route path="/workforce" component={WorkforceManagementHub} />
+          <Route path="/sustainability" component={SustainabilityHub} />
+          <Route path="/healthcare" component={HealthcareWellnessHub} />
+          <Route path="/academy" component={EducationAcademy} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
