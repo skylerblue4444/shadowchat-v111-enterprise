@@ -53,6 +53,7 @@ const NAV = [
     { path: "/ai-ide",       icon: Code2,     label: "AI Engineer IDE", badge: "PRO",  badgeType: "cyan" },
   ]},
   { section: "ANALYTICS & DATA", items: [
+    { path: "/valuation",   icon: BarChart3, label: "True Value", badge: "4.4B", badgeType: "green" },
     { path: "/analytics",   icon: BarChart3, label: "Analytics Hub" },
     { path: "/leaderboard", icon: Trophy,    label: "Leaderboard" },
     { path: "/data-lake",   icon: Database,  label: "Data Lake",       badge: "ENT", badgeType: "cyan" },

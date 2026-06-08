@@ -12,6 +12,8 @@ Every citizen of ShadowChat v1111 begins their journey with the **Sovereign Star
 - **Neural XP**: `4,444 XP` (Level 44)
 - **Neural Power**: `4,444 Power Units`
 - **Initial Assets**: `1,000 MNS` (Manus Coin) // `444 Credits` // `44 Gems`
+- **Sovereign Valuation**: The digital state is valued at **$4.44B** with real-time ICO and AUM tracking.
+- **True Value Engine**: Live telemetry tracking growth velocity and planetary market cap.
 
 ---
 

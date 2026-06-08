@@ -119,6 +119,7 @@ const ElitePatentLab = lazy(() => import("./pages/ElitePatentLab"));
 const PhilanthropyHub = lazy(() => import("./pages/PhilanthropyHub"));
 const AutonomousAgentHub = lazy(() => import("./pages/AutonomousAgentHub"));
 const UnifiedMarketplace = lazy(() => import("./pages/UnifiedMarketplace"));
+const SovereignValuationHub = lazy(() => import("./pages/SovereignValuationHub"));
 const NotFound        = lazy(() => import("./pages/NotFound"));
 
 function PageLoader() {
@@ -246,6 +247,7 @@ function Router() {
           <Route path="/philanthropy" component={PhilanthropyHub} />
           <Route path="/agents" component={AutonomousAgentHub} />
           <Route path="/unified-market" component={UnifiedMarketplace} />
+          <Route path="/valuation" component={SovereignValuationHub} />
           <Route path="*" component={NotFound} />
         </Switch>
       </Suspense>
